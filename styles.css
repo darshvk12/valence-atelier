@@ -257,75 +257,6 @@ body.cursor-project .cursor-badge {
   transform: translate(2px, -2px);
 }
 
-/* Floating Audio Ambient Pill Dock */
-.ambient-pill-dock {
-  position: fixed;
-  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  left: var(--pad-x);
-  z-index: 100;
-}
-
-.soundscape-toggle {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(14, 15, 18, 0.12);
-  padding: 8px 16px;
-  min-height: 40px;
-  border-radius: var(--radius-pill);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  transition: transform var(--trans-fast), border-color var(--trans-fast), background-color var(--trans-fast);
-}
-
-.soundscape-toggle:active {
-  transform: scale(0.96);
-}
-
-.sound-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 12px;
-}
-
-.sound-bars .bar {
-  width: 2.5px;
-  height: 4px;
-  background-color: var(--text-main);
-  border-radius: 2px;
-  transition: height 0.2s ease;
-}
-
-.soundscape-toggle.active {
-  background-color: #0E0F12;
-  color: #FFFFFF;
-}
-
-.soundscape-toggle.active .sound-bars .bar {
-  background-color: #10B981;
-  animation: soundBarDance 0.8s ease-in-out infinite alternate;
-}
-
-.soundscape-toggle.active .sound-bars .bar-1 { animation-delay: 0.1s; height: 12px; }
-.soundscape-toggle.active .sound-bars .bar-2 { animation-delay: 0.3s; height: 8px; }
-.soundscape-toggle.active .sound-bars .bar-3 { animation-delay: 0.2s; height: 14px; }
-.soundscape-toggle.active .sound-bars .bar-4 { animation-delay: 0.4s; height: 6px; }
-
-@keyframes soundBarDance {
-  0% { height: 4px; }
-  100% { height: 14px; }
-}
-
-.soundscape-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-
 /* --- 6. GLOBAL HEADER & NAVIGATION --- */
 .site-header {
   position: fixed;
@@ -1527,7 +1458,7 @@ body.cursor-project .cursor-badge {
   color: var(--text-dark-muted);
 }
 
-.soundscape-hint {
+.doctrine-hint {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-dark-muted);

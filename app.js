@@ -1,7 +1,7 @@
 /**
  * VALENCE ATELIER — Interactive Engine & Motion Physics
  * Features: Lenis Smooth Scroll, Magnetic Cursor, Word-by-Word Scroll Scrubbing,
- * Web Audio Spatial Soundscape, Interactive Material Canvas, World Clocks, Stacking Cards.
+ * Interactive Material Canvas, World Clocks, Stacking Cards.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -455,115 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     8. WEB AUDIO SPATIAL SOUNDSCAPE SYNTHESIZER (BINAURAL 432Hz RESONANCE)
-     ========================================================================== */
-  const soundscapeBtn = document.getElementById('soundscapeBtn');
-  const soundscapeLabel = document.getElementById('soundscapeLabel');
-  let audioCtx = null;
-  let masterGain = null;
-  let isSoundActive = false;
-
-  const initAudioSoundscape = () => {
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContext();
-
-      masterGain = audioCtx.createGain();
-      masterGain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-      masterGain.connect(audioCtx.destination);
-
-      // Warm Acoustic Lowpass Filter (ensures silky warmth without harsh high frequencies)
-      const masterFilter = audioCtx.createBiquadFilter();
-      masterFilter.type = 'lowpass';
-      masterFilter.frequency.setValueAtTime(1400, audioCtx.currentTime);
-      masterFilter.Q.setValueAtTime(1.5, audioCtx.currentTime);
-      masterFilter.connect(masterGain);
-
-      // Harmonic 432 Hz Pythagorean Tuning Chord (clearly audible across laptop & phone speakers)
-      // 1. Root fundamental: 216 Hz (warm tenor resonance)
-      const osc1 = audioCtx.createOscillator();
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(216.0, audioCtx.currentTime);
-      const gain1 = audioCtx.createGain();
-      gain1.gain.setValueAtTime(0.28, audioCtx.currentTime);
-      osc1.connect(gain1);
-      gain1.connect(masterFilter);
-
-      // 2. Pure 432 Hz center harmonic (warm overtone)
-      const osc2 = audioCtx.createOscillator();
-      osc2.type = 'triangle';
-      osc2.frequency.setValueAtTime(432.0, audioCtx.currentTime);
-      const gain2 = audioCtx.createGain();
-      gain2.gain.setValueAtTime(0.22, audioCtx.currentTime);
-      osc2.connect(gain2);
-      gain2.connect(masterFilter);
-
-      // 3. Harmonic Fifth: 324 Hz (peaceful cathedral fifth)
-      const osc3 = audioCtx.createOscillator();
-      osc3.type = 'sine';
-      osc3.frequency.setValueAtTime(324.0, audioCtx.currentTime);
-      const gain3 = audioCtx.createGain();
-      gain3.gain.setValueAtTime(0.18, audioCtx.currentTime);
-      osc3.connect(gain3);
-      gain3.connect(masterFilter);
-
-      // 4. Subtle shimmer overtone: 648 Hz
-      const osc4 = audioCtx.createOscillator();
-      osc4.type = 'sine';
-      osc4.frequency.setValueAtTime(648.0, audioCtx.currentTime);
-      const gain4 = audioCtx.createGain();
-      gain4.gain.setValueAtTime(0.08, audioCtx.currentTime);
-      osc4.connect(gain4);
-      gain4.connect(masterFilter);
-
-      // 5. Binaural chorus LFO (slow subtle swell)
-      const lfo = audioCtx.createOscillator();
-      lfo.frequency.setValueAtTime(0.12, audioCtx.currentTime);
-      const lfoGain = audioCtx.createGain();
-      lfoGain.gain.setValueAtTime(120, audioCtx.currentTime);
-      lfo.connect(lfoGain);
-      lfoGain.connect(masterFilter.frequency);
-
-      osc1.start();
-      osc2.start();
-      osc3.start();
-      osc4.start();
-      lfo.start();
-    } catch (e) {
-      console.warn('Web Audio initialization error:', e);
-    }
-  };
-
-  if (soundscapeBtn) {
-    soundscapeBtn.addEventListener('click', () => {
-      if (!isSoundActive) {
-        if (!audioCtx) initAudioSoundscape();
-        if (audioCtx && audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-        if (masterGain && audioCtx) {
-          masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
-          masterGain.gain.setValueAtTime(masterGain.gain.value, audioCtx.currentTime);
-          masterGain.gain.linearRampToValueAtTime(0.32, audioCtx.currentTime + 0.3);
-        }
-        soundscapeBtn.classList.add('active');
-        if (soundscapeLabel) soundscapeLabel.textContent = 'Soundscape 432Hz: ON';
-        isSoundActive = true;
-      } else {
-        if (masterGain && audioCtx) {
-          masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
-          masterGain.gain.setValueAtTime(masterGain.gain.value, audioCtx.currentTime);
-          masterGain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
-        }
-        soundscapeBtn.classList.remove('active');
-        if (soundscapeLabel) soundscapeLabel.textContent = 'Soundscape 432Hz: OFF';
-        isSoundActive = false;
-      }
-    });
-  }
-
-  /* ==========================================================================
-     9. SYNCHRONIZED REAL-TIME WORLD CLOCKS
+     8. SYNCHRONIZED REAL-TIME WORLD CLOCKS
      ========================================================================== */
   const formatCityTime = (timeZone) => {
     try {
