@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALENCE ATELIER — Monolithic Architecture & Bespoke Sanctuaries</title>
+  <meta name="description" content="Valence Atelier creates bespoke monolithic spatial architecture, subterranean pavilions, and climate-resilient private sanctuaries engineered for geologic permanence.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23111'/><circle cx='50' cy='50' r='20' fill='%23fff'/></svg>">
+
+  <!-- Google Fonts: Syne (Brutalist display), Plus Jakarta Sans (Swiss body), Space Mono (Monospace technical) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-light">
+
+  <!-- Custom Magnetic Cursor -->
+  <div id="cursor" class="custom-cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-badge">
+      <span class="badge-text">VIEW</span>
+      <i data-lucide="arrow-up-right" class="badge-icon"></i>
+    </div>
+  </div>
+
+  <!-- Audio Ambient Synthesizer Floating Pill Dock -->
+  <div class="ambient-pill-dock" id="soundscapePill" title="Toggle Spatial Acoustic Atmosphere">
+    <button class="soundscape-toggle" id="soundscapeBtn" aria-label="Toggle Gallery Acoustic Soundscape">
+      <div class="sound-bars" id="soundBars">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+        <span class="bar bar-4"></span>
+      </div>
+      <span class="soundscape-label" id="soundscapeLabel">Soundscape 432Hz: OFF</span>
+    </button>
+  </div>
+
+  <!-- Fixed Top Global Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#hero" class="brand-identity magnetic-target">
+        <span class="brand-monogram">VALENCE</span>
+        <span class="brand-status-dot"></span>
+        <span class="brand-dept">(Atelier 2026©)</span>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="#monoliths" class="nav-link magnetic-target">Sanctuaries <sup>(04)</sup></a>
+        <a href="#philosophy" class="nav-link magnetic-target">Philosophy</a>
+        <a href="#material-lab" class="nav-link magnetic-target">Material Lab</a>
+        <a href="#telemetry" class="nav-link magnetic-target">Telemetry</a>
+        <a href="#monographs" class="nav-link magnetic-target">Monographs</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-pill btn-pill-dark magnetic-target open-commission-btn" id="headerCtaBtn">
+          <span>Commission</span>
+          <i data-lucide="arrow-up-right" class="btn-icon"></i>
+        </button>
+
+        <button class="menu-toggle-btn magnetic-target" id="menuToggleBtn" aria-label="Toggle Navigation Drawer">
+          <span class="menu-line line-1"></span>
+          <span class="menu-line line-2"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Fullscreen Slide-Down Mobile/Drawer Menu -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="nav-drawer" id="navDrawer">
+    <div class="drawer-header">
+      <span class="mono-tag">(Navigation Menu)</span>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <ul class="drawer-links">
+        <li><a href="#hero" class="drawer-link" data-index="01">Overview</a></li>
+        <li><a href="#monoliths" class="drawer-link" data-index="02">Monoliths & Sanctuaries</a></li>
+        <li><a href="#philosophy" class="drawer-link" data-index="03">Core Philosophy</a></li>
+        <li><a href="#material-lab" class="drawer-link" data-index="04">Materiality Studio</a></li>
+        <li><a href="#telemetry" class="drawer-link" data-index="05">Telemetry & Engineering</a></li>
+        <li><a href="#monographs" class="drawer-link" data-index="06">Architectural Monographs</a></li>
+      </ul>
+
+      <div class="drawer-footer">
+        <div class="drawer-meta-col">
+          <span class="drawer-meta-title">Atelier Locations</span>
+          <p>Zurich · Kyoto · Reykjavik · Milan</p>
+        </div>
+        <div class="drawer-meta-col">
+          <span class="drawer-meta-title">Inquiries</span>
+          <a href="mailto:atelier@valence-spatial.com">atelier@valence-spatial.com</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Interactive Commission Slide-Over Drawer -->
+  <aside class="commission-drawer" id="commissionDrawer">
+    <div class="commission-inner">
+      <div class="commission-header">
+        <div>
+          <span class="mono-tag">(Sanctuary Commission Intake)</span>
+          <h3 class="commission-title">Initiate Dialogue</h3>
+        </div>
+        <button class="drawer-close-btn" id="commissionCloseBtn" aria-label="Close Drawer">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <form id="commissionForm" class="commission-form">
+        <p class="form-disclaimer">
+          We accept a maximum of three private commissions per calendar year to preserve structural craftsmanship and acoustic purity.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label" for="commName">Patron / Trust Name *</label>
+          <input type="text" id="commName" required placeholder="e.g. Lorde & Hapsburg Trust" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="commEmail">Direct Secure Email *</label>
+          <input type="email" id="commEmail" required placeholder="patron@domain.com" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Typology Selection</label>
+          <div class="pill-checkbox-group">
+            <label class="pill-checkbox">
+              <input type="checkbox" name="typology" value="Subterranean" checked>
+              <span>Subterranean Sanctuary</span>
+            </label>
+            <label class="pill-checkbox">
+              <input type="checkbox" name="typology" value="Alpine">
+              <span>Alpine Cantilever</span>
+            </label>
+            <label class="pill-checkbox">
+              <input type="checkbox" name="typology" value="Coastal">
+              <span>Coastal Cliff Monolith</span>
+            </label>
+            <label class="pill-checkbox">
+              <input type="checkbox" name="typology" value="Acoustic">
+              <span>Private Acoustic Chamber</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="commLocation">Geographic Site & Topography</label>
+          <input type="text" id="commLocation" placeholder="e.g. Bernese Oberland, 1,850m elevation" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="commBudget">Project Scope Budget (CHF / USD)</label>
+          <select id="commBudget" class="form-input select-input">
+            <option value="5-10m">$5,000,000 – $10,000,000</option>
+            <option value="10-25m" selected>$10,000,000 – $25,000,000</option>
+            <option value="25m+">$25,000,000+ (Institutional / Sovereign)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="commNotes">Specialized Architectural Directives</label>
+          <textarea id="commNotes" rows="3" placeholder="Acoustic isolation, geothermal core, seismic dampening, natural stone quarry access..." class="form-input"></textarea>
+        </div>
+
+        <button type="submit" class="btn-pill btn-pill-dark btn-submit-full magnetic-target">
+          <span>Transmit Commission Request</span>
+          <i data-lucide="send" class="btn-icon"></i>
+        </button>
+
+        <div class="form-success-message" id="formSuccessMessage">
+          <i data-lucide="check-circle" class="success-icon"></i>
+          <p>Dossier received by Senior Partner. Our Zurich registry will contact your office within 24 hours.</p>
+        </div>
+      </form>
+    </div>
+  </aside>
+
+  <!-- MAIN SCROLL CONTAINER -->
+  <main id="main">
+
+    <!-- 1. HERO SECTION -->
+    <section class="section-hero" id="hero">
+      <div class="hero-top-grid">
+        <!-- Left: Disciplinary Capability Stack -->
+        <div class="hero-col-left">
+          <span class="mono-tag">(Core Architectural Disciplines)</span>
+          <ul class="discipline-stack">
+            <li class="discipline-item"><span class="item-num">01</span> Monolithic Cast Basalt & Concrete</li>
+            <li class="discipline-item"><span class="item-num">02</span> Subterranean Vaults & Galleries</li>
+            <li class="discipline-item"><span class="item-num">03</span> Anechoic & Acoustic Sanctuaries</li>
+            <li class="discipline-item"><span class="item-num">04</span> Geothermal & Passive Climate Mass</li>
+            <li class="discipline-item"><span class="item-num">05</span> Kinetic Astronomical Facades</li>
+            <li class="discipline-item"><span class="item-num">06</span> Bespoke Monolithic Furnishings</li>
+          </ul>
+        </div>
+
+        <!-- Right: Manifesto Excerpt & Primary Magnetic CTA -->
+        <div class="hero-col-right">
+          <div class="hero-manifesto-card">
+            <span class="mono-tag">(Design Thesis 2026)</span>
+            <p class="hero-statement">
+              Modern structures are thin, noisy, and disposable. We carve immutable geological sanctuaries rooted in volcanic basalt, seismic isolation, and acoustic silence.
+            </p>
+            <div class="hero-cta-wrap">
+              <button class="btn-pill btn-pill-dark magnetic-target open-commission-btn">
+                <span>Commission a Sanctuary</span>
+                <i data-lucide="arrow-up-right" class="btn-icon"></i>
+              </button>
+              <a href="#monoliths" class="btn-pill btn-pill-ghost magnetic-target">
+                <span>Explore Works (4)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Subtle Grid Crosshair Alignment -->
+      <div class="hero-crosshairs">
+        <div class="crosshair-center">
+          <span class="coord-label">[47.3769° N, 8.5417° E · 1,420M ELEVATION]</span>
+          <span class="crosshair-plus">+</span>
+          <span class="coord-status">SEISMIC GRADE I APPROVED</span>
+        </div>
+      </div>
+
+      <!-- Giant Fluid Wordmark -->
+      <div class="hero-wordmark-container">
+        <h1 class="hero-wordmark">VALENCE</h1>
+        <div class="hero-wordmark-sub">
+          <span>MONOLITHIC SPATIAL ARCHITECTURE</span>
+          <span class="separator">/</span>
+          <span>GEOLOGIC SANCTUARIES</span>
+        </div>
+      </div>
+
+      <!-- Hero Parallax Showcase Deck -->
+      <div class="hero-cards-preview">
+        <div class="preview-card card-left" data-speed="0.85">
+          <div class="preview-img-wrap">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85" alt="Valser Fels Alpine Monolith" loading="eager">
+          </div>
+          <div class="preview-meta">
+            <span class="preview-title">Valser Fels</span>
+            <span class="mono-tag">Graubünden, CH</span>
+          </div>
+        </div>
+
+        <div class="preview-card card-center" data-speed="1.15">
+          <div class="preview-img-wrap">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85" alt="Kanso Subterranean Tea Vault" loading="eager">
+          </div>
+          <div class="preview-meta">
+            <span class="preview-title">Kanso Subterranean</span>
+            <span class="mono-tag">Kyoto, JP</span>
+          </div>
+        </div>
+
+        <div class="preview-card card-right" data-speed="0.95">
+          <div class="preview-img-wrap">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=85" alt="Sólheimar Basalt Monolith" loading="eager">
+          </div>
+          <div class="preview-meta">
+            <span class="preview-title">Sólheimar Fissure</span>
+            <span class="mono-tag">Reykjavik, IS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PATRONS MARQUEE & PROOF -->
+    <section class="section-patrons">
+      <div class="patrons-header">
+        <span class="mono-tag">(Patrons & Foundations)</span>
+        <span class="patrons-period">● 2018–2026 ARCHIVE ●</span>
+        <span class="mono-tag">(Verified Commissions)</span>
+      </div>
+
+      <div class="patrons-marquee-track">
+        <div class="marquee-content">
+          <div class="patron-badge">Nordic Geothermal Trust</div>
+          <div class="patron-badge">Kyoto Imperial Preservation Foundation</div>
+          <div class="patron-badge">Helvetia Alpine Heritage Bureau</div>
+          <div class="patron-badge">Atacama Deep Sky Observatory</div>
+          <div class="patron-badge">Rothschild-Vaud Private Office</div>
+          <div class="patron-badge">St. Moritz Acoustics Chamber</div>
+          <div class="patron-badge">Sólheimar Basalt Institute</div>
+        </div>
+        <!-- Duplicated for continuous marquee -->
+        <div class="marquee-content" aria-hidden="true">
+          <div class="patron-badge">Nordic Geothermal Trust</div>
+          <div class="patron-badge">Kyoto Imperial Preservation Foundation</div>
+          <div class="patron-badge">Helvetia Alpine Heritage Bureau</div>
+          <div class="patron-badge">Atacama Deep Sky Observatory</div>
+          <div class="patron-badge">Rothschild-Vaud Private Office</div>
+          <div class="patron-badge">St. Moritz Acoustics Chamber</div>
+          <div class="patron-badge">Sólheimar Basalt Institute</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MONOLITHS (STICKY STACKING CASE STUDIES) -->
+    <section class="section-monoliths" id="monoliths">
+      <div class="monoliths-container">
+        
+        <!-- Sticky Left Meta Column -->
+        <aside class="monoliths-sidebar">
+          <div class="sticky-sidebar-content">
+            <span class="mono-tag">(Commission Archive 26©)</span>
+            <h2 class="sidebar-heading">Monoliths <span class="accent-count">(4)</span></h2>
+            <p class="sidebar-desc">
+              Four architectural interventions carved into extreme topographies. Each project is engineered with high thermal inertia, local geological stone, and zero cosmetic finishes.
+            </p>
+
+            <div class="sidebar-filters">
+              <span class="filter-pill active">All Sanctuaries</span>
+              <span class="filter-pill">Subterranean</span>
+              <span class="filter-pill">Alpine Mass</span>
+              <span class="filter-pill">Volcanic Basalt</span>
+            </div>
+
+            <div class="sidebar-action">
+              <button class="btn-pill btn-pill-dark magnetic-target open-commission-btn">
+                <span>Request Case Dossiers</span>
+                <i data-lucide="arrow-up-right" class="btn-icon"></i>
+              </button>
+            </div>
+
+            <div class="sidebar-quote">
+              <p>“Valence does not apply finishes. The structure is the finish.”</p>
+              <span class="quote-author">— Dr. Henrik Vane, Architectural Review Zurich</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right: Stacking Dossier Deck -->
+        <div class="stacking-deck" id="stackingDeck">
+
+          <!-- Card 01 -->
+          <article class="stack-card" id="card-01" data-index="01">
+            <div class="stack-card-inner">
+              <div class="stack-card-header">
+                <div class="card-title-group">
+                  <span class="mono-tag">(Archive No. 01/04)</span>
+                  <h3 class="card-title">Sólheimar Monolith</h3>
+                  <span class="card-location">Reykjavik Fissure, Iceland</span>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Basalt Cantilever</span>
+                  <span class="card-tag">Geothermal Radiant Core</span>
+                </div>
+              </div>
+
+              <div class="stack-media-wrap">
+                <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1600&q=85" alt="Sólheimar Monolith in Iceland" class="stack-img">
+                <div class="media-overlay-pill">
+                  <i data-lucide="maximize-2"></i>
+                  <span>Inspect Elevation Blueprints</span>
+                </div>
+              </div>
+
+              <div class="stack-card-specs">
+                <div class="spec-col">
+                  <span class="spec-label">Thermal Mass</span>
+                  <span class="spec-val">840 Tonnes Basalt</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Acoustic Rating</span>
+                  <span class="spec-val">NC-15 (Anechoic)</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Energy Autonomy</span>
+                  <span class="spec-val">100% Geothermal Closed-Loop</span>
+                </div>
+                <div class="spec-col action-col">
+                  <button class="spec-detail-btn magnetic-target open-commission-btn">
+                    <span>Inquire Access</span>
+                    <i data-lucide="arrow-up-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="stack-card" id="card-02" data-index="02">
+            <div class="stack-card-inner">
+              <div class="stack-card-header">
+                <div class="card-title-group">
+                  <span class="mono-tag">(Archive No. 02/04)</span>
+                  <h3 class="card-title">Kanso Subterranean Vault</h3>
+                  <span class="card-location">Kyoto Western Foothills, Japan</span>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Carbonized Hinoki</span>
+                  <span class="card-tag">Subterranean Courtyard</span>
+                </div>
+              </div>
+
+              <div class="stack-media-wrap">
+                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1600&q=85" alt="Kanso Subterranean Vault Kyoto" class="stack-img">
+                <div class="media-overlay-pill">
+                  <i data-lucide="maximize-2"></i>
+                  <span>Inspect Acoustic Section</span>
+                </div>
+              </div>
+
+              <div class="stack-card-specs">
+                <div class="spec-col">
+                  <span class="spec-label">Subterranean Depth</span>
+                  <span class="spec-val">8.4 Metres Below Grade</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Joinery Technique</span>
+                  <span class="spec-val">Nuki Mortise & Tenon (Zero Nails)</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Microclimate</span>
+                  <span class="spec-val">Natural Rammed Earth Regulated</span>
+                </div>
+                <div class="spec-col action-col">
+                  <button class="spec-detail-btn magnetic-target open-commission-btn">
+                    <span>Inquire Access</span>
+                    <i data-lucide="arrow-up-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="stack-card" id="card-03" data-index="03">
+            <div class="stack-card-inner">
+              <div class="stack-card-header">
+                <div class="card-title-group">
+                  <span class="mono-tag">(Archive No. 03/04)</span>
+                  <h3 class="card-title">Valser Fels Pavilion</h3>
+                  <span class="card-location">Graubünden Canton, Switzerland</span>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Bush-Hammered Concrete</span>
+                  <span class="card-tag">Alpine Granite Bedrock</span>
+                </div>
+              </div>
+
+              <div class="stack-media-wrap">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=85" alt="Valser Fels Alpine Monolith" class="stack-img">
+                <div class="media-overlay-pill">
+                  <i data-lucide="maximize-2"></i>
+                  <span>Inspect Structural Bedrock Pinning</span>
+                </div>
+              </div>
+
+              <div class="stack-card-specs">
+                <div class="spec-col">
+                  <span class="spec-label">Elevation</span>
+                  <span class="spec-val">1,940 Metres Above Sea Level</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Wall Thickness</span>
+                  <span class="spec-val">1,100mm Solid Cast Mass</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Snow Load Capacity</span>
+                  <span class="spec-val">12 kN/m² Arctic Engineered</span>
+                </div>
+                <div class="spec-col action-col">
+                  <button class="spec-detail-btn magnetic-target open-commission-btn">
+                    <span>Inquire Access</span>
+                    <i data-lucide="arrow-up-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 04 -->
+          <article class="stack-card" id="card-04" data-index="04">
+            <div class="stack-card-inner">
+              <div class="stack-card-header">
+                <div class="card-title-group">
+                  <span class="mono-tag">(Archive No. 04/04)</span>
+                  <h3 class="card-title">Atacama Chronos Observatory</h3>
+                  <span class="card-location">San Pedro Desert, Chile</span>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Titanium Aperture</span>
+                  <span class="card-tag">Smoked Obsidian Glass</span>
+                </div>
+              </div>
+
+              <div class="stack-media-wrap">
+                <img src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1600&q=85" alt="Atacama Chronos Observatory" class="stack-img">
+                <div class="media-overlay-pill">
+                  <i data-lucide="maximize-2"></i>
+                  <span>Inspect Kinetic Astrolabe Roof</span>
+                </div>
+              </div>
+
+              <div class="stack-card-specs">
+                <div class="spec-col">
+                  <span class="spec-label">Optical Clarity</span>
+                  <span class="spec-val">99.8% Transmittance Quartzite</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Diurnal Swing Buffer</span>
+                  <span class="spec-val">±0.4°C Interior Stability</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Horizon Exposure</span>
+                  <span class="spec-val">360° Unobstructed Celestial Dome</span>
+                </div>
+                <div class="spec-col action-col">
+                  <button class="spec-detail-btn magnetic-target open-commission-btn">
+                    <span>Inquire Access</span>
+                    <i data-lucide="arrow-up-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DARK INVERSION SCROLL-SCRUBBED THEATRE -->
+    <section class="section-philosophy" id="philosophy">
+      <div class="philosophy-backdrop-noise"></div>
+      
+      <div class="philosophy-sticky-box">
+        <div class="philosophy-top-bar">
+          <span class="mono-tag">(Spatial Doctrine · Why Permanence Matters)</span>
+          <span class="mono-tag status-live-tag">● SCRUB VIEWPORT ●</span>
+        </div>
+
+        <div class="scrub-container">
+          <p class="scrub-manifesto" id="scrubManifesto">
+            <span class="scrub-word">The</span>
+            <span class="scrub-word">contemporary</span>
+            <span class="scrub-word">world</span>
+            <span class="scrub-word">is</span>
+            <span class="scrub-word">loud,</span>
+            <span class="scrub-word">disposable,</span>
+            <span class="scrub-word">and</span>
+            <span class="scrub-word">paper-thin.</span>
+            <span class="scrub-word">We</span>
+            <span class="scrub-word">categorically</span>
+            <span class="scrub-word">reject</span>
+            <span class="scrub-word">cosmetic</span>
+            <span class="scrub-word">facades.</span>
+            <span class="scrub-word">We</span>
+            <span class="scrub-word">carve</span>
+            <span class="scrub-word highlight">immutable</span>
+            <span class="scrub-word highlight">geological</span>
+            <span class="scrub-word highlight">sanctuaries</span>
+            <span class="scrub-word">engineered</span>
+            <span class="scrub-word">to</span>
+            <span class="scrub-word">outlive</span>
+            <span class="scrub-word">the</span>
+            <span class="scrub-word">next</span>
+            <span class="scrub-word highlight">five</span>
+            <span class="scrub-word highlight">centuries.</span>
+          </p>
+        </div>
+
+        <div class="philosophy-bottom-bar">
+          <div class="scrub-progress-wrap">
+            <span class="mono-tag">Scrub Calibration:</span>
+            <div class="scrub-bar-track">
+              <div class="scrub-bar-fill" id="scrubBarFill"></div>
+            </div>
+            <span class="scrub-pct" id="scrubPct">0%</span>
+          </div>
+
+          <div class="soundscape-hint">
+            <span class="hint-text">(Listen: Acoustic resonance active below)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TELEMETRY & SPECIFICATIONS (DARK BRUTALIST METRICS) -->
+    <section class="section-telemetry" id="telemetry">
+      <div class="telemetry-header">
+        <div>
+          <span class="mono-tag">(Structural Telemetry & Verifications)</span>
+          <h2 class="telemetry-title">Engineering by the Tonne</h2>
+        </div>
+        <p class="telemetry-sub">
+          Every joint is modeled against 500-year seismic, thermal, and acoustic load cycles before ground is broken.
+        </p>
+      </div>
+
+      <div class="telemetry-grid">
+        <div class="telemetry-card">
+          <div class="card-status-dot"></div>
+          <span class="card-metric-num" data-target="18">0</span>
+          <span class="card-metric-suffix">Monoliths</span>
+          <h4 class="card-metric-title">Sanctuaries Erected Globally</h4>
+          <p class="card-metric-desc">Zero structural fissures or retrofits recorded across 12 climatic zones.</p>
+          <div class="card-meta-row">
+            <span class="mono-tag">Tolerance: ±0.5mm</span>
+            <span class="mono-tag">Grade: Sovereign</span>
+          </div>
+        </div>
+
+        <div class="telemetry-card">
+          <div class="card-status-dot"></div>
+          <span class="card-metric-num" data-target="1420">0</span>
+          <span class="card-metric-suffix">Tonnes</span>
+          <h4 class="card-metric-title">Cast Basalt & Granite Mass</h4>
+          <p class="card-metric-desc">Thermal storage capacity delivering natural passive heating and cooling.</p>
+          <div class="card-meta-row">
+            <span class="mono-tag">Thermal Lag: 72 hrs</span>
+            <span class="mono-tag">Density: 2,900 kg/m³</span>
+          </div>
+        </div>
+
+        <div class="telemetry-card">
+          <div class="card-status-dot"></div>
+          <span class="card-metric-num" data-target="500">0</span>
+          <span class="card-metric-suffix">Years</span>
+          <h4 class="card-metric-title">Structural Lifecycle Warrant</h4>
+          <p class="card-metric-desc">Constructed without synthetic sealants or vulnerable cladding membranes.</p>
+          <div class="card-meta-row">
+            <span class="mono-tag">Insurance: Lloyd’s Direct</span>
+            <span class="mono-tag">Seismic: Class 9+</span>
+          </div>
+        </div>
+
+        <div class="telemetry-card">
+          <div class="card-status-dot"></div>
+          <span class="card-metric-num" data-target="0">0.00</span>
+          <span class="card-metric-suffix">Net CO₂</span>
+          <h4 class="card-metric-title">Operational Carbon Footprint</h4>
+          <p class="card-metric-desc">Subterranean earth coupling and localized hydrothermal power generation.</p>
+          <div class="card-meta-row">
+            <span class="mono-tag">Energy Autonomy: 100%</span>
+            <span class="mono-tag">ISO: 14044 Verified</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. MATERIALITY STUDIO (INTERACTIVE CANVAS & SHADER TACTILITY LAB) -->
+    <section class="section-material-lab" id="material-lab">
+      <div class="material-lab-header">
+        <div>
+          <span class="mono-tag">(Tactility & Specimen Studio)</span>
+          <h2 class="material-title">The Material Laboratory</h2>
+        </div>
+        <p class="material-sub">
+          Interact with our five foundational architectural mediums. Move your cursor over the specimen to inspect specular roughness and micro-facet light diffusion.
+        </p>
+      </div>
+
+      <div class="material-interactive-grid">
+        <!-- Interactive Canvas Viewport -->
+        <div class="canvas-viewport-wrap">
+          <canvas id="materialCanvas" width="900" height="600"></canvas>
+          <div class="canvas-hud">
+            <div class="hud-item">
+              <span class="hud-label">LIGHT VECTOR</span>
+              <span class="hud-val" id="hudLightVector">X: 0.50 | Y: 0.50</span>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">ROUGHNESS COEFFICIENT</span>
+              <span class="hud-val" id="hudRoughness">0.82 Ra</span>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">SURFACE STATUS</span>
+              <span class="hud-val text-accent">UNPOLISHED / VIRGIN</span>
+            </div>
+          </div>
+          <div class="canvas-drag-hint">
+            <i data-lucide="move"></i>
+            <span>Drag or move cursor across specimen</span>
+          </div>
+        </div>
+
+        <!-- Material Switcher Panel -->
+        <div class="material-control-panel">
+          <span class="mono-tag">(Select Geological Medium)</span>
+
+          <div class="material-selector-list">
+            <button class="material-btn active" data-mat="concrete">
+              <div class="mat-btn-left">
+                <span class="mat-index">01</span>
+                <div>
+                  <h4 class="mat-name">Bush-Hammered Concrete</h4>
+                  <span class="mat-origin">Alpine Aggregate · Vals, CH</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="mat-arrow"></i>
+            </button>
+
+            <button class="material-btn" data-mat="basalt">
+              <div class="mat-btn-left">
+                <span class="mat-index">02</span>
+                <div>
+                  <h4 class="mat-name">Volcanic Black Basalt</h4>
+                  <span class="mat-origin">Solid Columnar · Vik, IS</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="mat-arrow"></i>
+            </button>
+
+            <button class="material-btn" data-mat="titanium">
+              <div class="mat-btn-left">
+                <span class="mat-index">03</span>
+                <div>
+                  <h4 class="mat-name">Darkened Brushed Titanium</h4>
+                  <span class="mat-origin">Aerospace Grade · Zurich, CH</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="mat-arrow"></i>
+            </button>
+
+            <button class="material-btn" data-mat="hinoki">
+              <div class="mat-btn-left">
+                <span class="mat-index">04</span>
+                <div>
+                  <h4 class="mat-name">Carbonized Hinoki Cypress</h4>
+                  <span class="mat-origin">Yakisugi Charred · Kyoto, JP</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="mat-arrow"></i>
+            </button>
+
+            <button class="material-btn" data-mat="quartz">
+              <div class="mat-btn-left">
+                <span class="mat-index">05</span>
+                <div>
+                  <h4 class="mat-name">Smoked Obsidian Quartzite</h4>
+                  <span class="mat-origin">Bedrock Fracture · Atacama, CL</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="mat-arrow"></i>
+            </button>
+          </div>
+
+          <!-- Dynamic Specimen Dossier -->
+          <div class="specimen-dossier" id="specimenDossier">
+            <h4 class="dossier-title" id="dossierTitle">Bush-Hammered Alpine Concrete</h4>
+            <p class="dossier-desc" id="dossierDesc">
+              Formulated with locally quarried crushed quartz from the Swiss Alps. Struck repeatedly with pneumatic bush-hammers to fracture the surface cement cream, revealing the deep mineral grains and dampening high-frequency sound waves.
+            </p>
+            <div class="dossier-metrics">
+              <div class="metric-row">
+                <span>Density</span>
+                <strong id="dossierDensity">2,450 kg/m³</strong>
+              </div>
+              <div class="metric-row">
+                <span>Compressive Strength</span>
+                <strong id="dossierStrength">75 MPa (C60/75)</strong>
+              </div>
+              <div class="metric-row">
+                <span>Acoustic Absorption</span>
+                <strong id="dossierAcoustic">0.38 αw (Low Flutter)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. EDITORIAL MONOGRAPHS & RESEARCH (BBMH INSIGHTS STYLE) -->
+    <section class="section-monographs" id="monographs">
+      <div class="monographs-header">
+        <div>
+          <span class="mono-tag">(Atelier Monographs & Research)</span>
+          <h2 class="monographs-title">Monographs & Critical Essays</h2>
+        </div>
+        <a href="#hero" class="btn-pill btn-pill-dark magnetic-target">
+          <span>Complete Archive</span>
+          <i data-lucide="arrow-up-right" class="btn-icon"></i>
+        </a>
+      </div>
+
+      <div class="monographs-grid">
+        <!-- Article 1 -->
+        <article class="monograph-card">
+          <div class="card-thumb-wrap">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=85" alt="Monograph 01" class="thumb-img">
+            <button class="thumb-corner-pill magnetic-target" aria-label="Read Monograph">
+              <i data-lucide="arrow-up-right"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="mono-tag">(Essay No. 42)</span>
+              <span class="read-time">7 min read</span>
+            </div>
+            <h3 class="article-headline">On Geologic Weight: Why Modern Lightness Failed Us</h3>
+            <p class="article-snippet">
+              A historical critique of the glass curtain wall and why true human emotional grounding demands mass, acoustic inertia, and shadow.
+            </p>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="monograph-card">
+          <div class="card-thumb-wrap">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=900&q=85" alt="Monograph 02" class="thumb-img">
+            <button class="thumb-corner-pill magnetic-target" aria-label="Read Monograph">
+              <i data-lucide="arrow-up-right"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="mono-tag">(Technical Study)</span>
+              <span class="read-time">12 min read</span>
+            </div>
+            <h3 class="article-headline">The Sound of Void: Subterranean Acoustics & Silence Engineering</h3>
+            <p class="article-snippet">
+              Documenting the NC-15 acoustic chamber carved inside the Reykjavik fissure, achieving absolute auditory isolation from external winds.
+            </p>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="monograph-card">
+          <div class="card-thumb-wrap">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85" alt="Monograph 03" class="thumb-img">
+            <button class="thumb-corner-pill magnetic-target" aria-label="Read Monograph">
+              <i data-lucide="arrow-up-right"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="mono-tag">(Climatic Research)</span>
+              <span class="read-time">9 min read</span>
+            </div>
+            <h3 class="article-headline">Passive Geothermal Mass as the Ultimate True Luxury</h3>
+            <p class="article-snippet">
+              Eliminating mechanical HVAC noise through massive 1,100mm stone envelopes that store summer warmth for winter radiation.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 8. THE LUSH ALPINE FINALE (ORGANIC CONTRAST CLIMAX FOOTER) -->
+    <footer class="section-footer" id="contact">
+      <!-- Full-bleed background photography: Moody misty pine forest & mossy stone -->
+      <div class="footer-bg-wrap">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2400&q=85" alt="Misty Alpine Pine Forest" class="footer-bg-img">
+        <div class="footer-overlay"></div>
+      </div>
+
+      <div class="footer-content-wrap">
+        <div class="footer-lead">
+          <span class="mono-tag text-white">(Commission Inquiry · 2027 Roster)</span>
+          <h2 class="footer-headline">Commission something that will outlive the century.</h2>
+          <p class="footer-sub">
+            We work exclusively with private patrons, state trusts, and cultural foundations committed to architectural permanence.
+          </p>
+
+          <!-- Translucent Quick Inquiry Capsule Form -->
+          <form class="footer-quick-form" id="quickInquiryForm">
+            <div class="quick-form-pill">
+              <i data-lucide="shield-check" class="form-icon"></i>
+              <input type="email" placeholder="Enter private email or advisor contact..." required class="quick-input" id="quickEmail">
+              <button type="submit" class="quick-submit-btn magnetic-target">
+                <span>Inquire</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+            <div class="quick-form-feedback" id="quickFeedback">
+              Receipt acknowledged. Direct transmission will follow.
+            </div>
+          </form>
+        </div>
+
+        <!-- Global Ateliers & Synchronized Real-Time Clocks -->
+        <div class="footer-directory-grid">
+          <div class="office-col">
+            <span class="office-city">Zurich</span>
+            <span class="office-tag">(European Headquarters)</span>
+            <p class="office-address">Limmatquai 48, 8001 Zürich, Switzerland</p>
+            <div class="clock-display" id="clockZurich">
+              <span class="clock-time">--:--:--</span> <span class="clock-tz">CET</span>
+            </div>
+          </div>
+
+          <div class="office-col">
+            <span class="office-city">Kyoto</span>
+            <span class="office-tag">(Asia-Pacific Studio)</span>
+            <p class="office-address">Higashiyama-ku, Kyoto 605-0862, Japan</p>
+            <div class="clock-display" id="clockKyoto">
+              <span class="clock-time">--:--:--</span> <span class="clock-tz">JST</span>
+            </div>
+          </div>
+
+          <div class="office-col">
+            <span class="office-city">Reykjavik</span>
+            <span class="office-tag">(Sub-Arctic Lab)</span>
+            <p class="office-address">Kaldársel, 220 Hafnarfjörður, Iceland</p>
+            <div class="clock-display" id="clockReykjavik">
+              <span class="clock-time">--:--:--</span> <span class="clock-tz">GMT</span>
+            </div>
+          </div>
+
+          <div class="office-col">
+            <span class="office-city">New York</span>
+            <span class="office-tag">(North American Liaison)</span>
+            <p class="office-address">432 Park Avenue, Suite 62, NY 10022</p>
+            <div class="clock-display" id="clockNY">
+              <span class="clock-time">--:--:--</span> <span class="clock-tz">EST</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Legal & Badges -->
+        <div class="footer-bottom-bar">
+          <div class="footer-legal">
+            <span>© 2026 VALENCE ATELIER AG. ALL RIGHTS RESERVED.</span>
+            <span>LICENSED CH-660.1.284.019-3</span>
+            <span>PERMANENCE FIRST.</span>
+          </div>
+
+          <div class="footer-socials">
+            <a href="#" class="social-circle magnetic-target" aria-label="Architectural Digest">AD</a>
+            <a href="#" class="social-circle magnetic-target" aria-label="Swiss Engineering">SIA</a>
+            <a href="#" class="social-circle magnetic-target" aria-label="Instagram">IG</a>
+            <a href="#" class="social-circle magnetic-target" aria-label="LinkedIn">LI</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Application JS Engine -->
+  <script src="app.js"></script>
+</body>
+</html>
