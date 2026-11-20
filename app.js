@@ -308,6 +308,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (canvas) {
     const ctx = canvas.getContext('2d');
 
+    // Dynamic resolution scaling for mobile Retina and desktop
+    const resizeCanvas = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+      }
+    };
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
     // Handle mouse movement over canvas
     canvas.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -320,7 +332,15 @@ document.addEventListener('DOMContentLoaded', () => {
       targetLightY = 0.5;
     });
 
-    // Touch support for canvas
+    // Touch support for mobile canvas
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        targetLightX = (e.touches[0].clientX - rect.left) / rect.width;
+        targetLightY = (e.touches[0].clientY - rect.top) / rect.height;
+      }
+    }, { passive: true });
+
     canvas.addEventListener('touchmove', (e) => {
       if (e.touches.length > 0) {
         const rect = canvas.getBoundingClientRect();
