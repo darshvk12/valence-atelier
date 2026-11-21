@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(raf);
 
       lenis.on('scroll', () => {
+        updateHeaderTheme();
         updateHeroScrollScale();
         updateStackingEffects();
         updateScrub();
@@ -81,16 +82,45 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     3. HEADER SCROLL DETECTION & ANCHOR NAVIGATION
+     3. HEADER SCROLL DETECTION & DYNAMIC ADAPTIVE THEME
      ========================================================================== */
   const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
+  const lightSectionSelectors = ['#monoliths', '#disciplines', '#endorsements', '#protocol'];
+
+  function updateHeaderTheme() {
+    if (!header) return;
+
+    // Detect if header is over a light-background section
+    const headerMidY = 40;
+    let isOverLightSection = false;
+
+    for (const sel of lightSectionSelectors) {
+      const sec = document.querySelector(sel);
+      if (sec) {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= headerMidY && rect.bottom >= headerMidY) {
+          isOverLightSection = true;
+          break;
+        }
+      }
+    }
+
+    if (isOverLightSection) {
+      header.classList.add('theme-light');
+    } else {
+      header.classList.remove('theme-light');
+    }
+
     if (window.scrollY > 40) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-  }, { passive: true });
+  }
+
+  window.addEventListener('scroll', updateHeaderTheme, { passive: true });
+  window.addEventListener('resize', updateHeaderTheme, { passive: true });
+  updateHeaderTheme();
 
   // Smooth scroll to anchor links using Lenis
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

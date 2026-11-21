@@ -257,7 +257,7 @@ body.cursor-project .cursor-badge {
   transform: translate(2px, -2px);
 }
 
-/* --- 6. GLOBAL HEADER & NAVIGATION --- */
+/* --- 6. GLOBAL HEADER & NAVIGATION (DYNAMIC ADAPTIVE THEME) --- */
 .site-header {
   position: fixed;
   top: 0;
@@ -265,11 +265,16 @@ body.cursor-project .cursor-badge {
   width: 100%;
   z-index: 200;
   padding: 12px var(--pad-x);
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  background-color: rgba(10, 11, 14, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.site-header.scrolled {
-  background-color: rgba(250, 248, 245, 0.88);
+/* Light Section State (When scrolled over Monoliths, Disciplines, Endorsements, Protocol) */
+.site-header.theme-light {
+  background-color: rgba(250, 248, 245, 0.90);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-light);
@@ -295,6 +300,12 @@ body.cursor-project .cursor-badge {
   font-weight: 800;
   font-size: 1.25rem;
   letter-spacing: -0.02em;
+  color: #FFFFFF;
+  transition: color 0.3s ease;
+}
+
+.site-header.theme-light .brand-monogram {
+  color: #0E0F12;
 }
 
 .brand-status-dot {
@@ -308,6 +319,11 @@ body.cursor-project .cursor-badge {
 .brand-dept {
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.3s ease;
+}
+
+.site-header.theme-light .brand-dept {
   color: var(--text-muted);
 }
 
@@ -326,7 +342,7 @@ body.cursor-project .cursor-badge {
 .nav-link {
   font-size: 0.88rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.8);
   position: relative;
   transition: color var(--trans-fast);
 }
@@ -334,10 +350,22 @@ body.cursor-project .cursor-badge {
 .nav-link sup {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--text-dim);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .nav-link:hover {
+  color: #FFFFFF;
+}
+
+.site-header.theme-light .nav-link {
+  color: var(--text-muted);
+}
+
+.site-header.theme-light .nav-link sup {
+  color: var(--text-dim);
+}
+
+.site-header.theme-light .nav-link:hover {
   color: var(--text-main);
 }
 
@@ -345,6 +373,30 @@ body.cursor-project .cursor-badge {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+/* Header CTA Button Adapts to Background */
+#headerCtaBtn {
+  background-color: #FFFFFF;
+  color: #0E0F12;
+  border-color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+#headerCtaBtn:hover {
+  background-color: #E2E8F0;
+  border-color: #E2E8F0;
+}
+
+.site-header.theme-light #headerCtaBtn {
+  background-color: #0E0F12;
+  color: #FFFFFF;
+  border-color: #0E0F12;
+}
+
+.site-header.theme-light #headerCtaBtn:hover {
+  background-color: #27272A;
+  border-color: #27272A;
 }
 
 .menu-toggle-btn {
@@ -355,10 +407,15 @@ body.cursor-project .cursor-badge {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.08);
+  align-items: center;
+  transition: transform var(--trans-fast), background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.site-header.theme-light .menu-toggle-btn {
   border: 1px solid var(--border-medium);
   background-color: var(--bg-card);
-  align-items: center;
-  transition: transform var(--trans-fast), background-color var(--trans-fast);
 }
 
 .menu-toggle-btn:active {
@@ -368,8 +425,12 @@ body.cursor-project .cursor-badge {
 .menu-line {
   width: 18px;
   height: 1.5px;
+  background-color: #FFFFFF;
+  transition: transform 0.3s ease, width 0.3s ease, background-color 0.3s ease;
+}
+
+.site-header.theme-light .menu-line {
   background-color: var(--text-main);
-  transition: transform 0.3s ease, width 0.3s ease;
 }
 
 @media (max-width: 640px) {
