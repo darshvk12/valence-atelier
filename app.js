@@ -127,9 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Progress from 0.0 (top of hero) to 1.0 (end of sticky hero range)
     const progress = Math.min(1, Math.max(0, -rect.top / scrollDist));
 
-    // Responsive scaling: desktop scales down to 0.72, mobile scales down to 0.86
+    // Responsive scaling: desktop scales down to 0.72, mobile scales down to 0.78
     const isMobile = window.innerWidth < 860;
-    const minScale = isMobile ? 0.86 : 0.72;
+    const minScale = isMobile ? 0.78 : 0.72;
     const currentScale = 1.0 - (progress * (1.0 - minScale));
 
     heroScaleWrapper.style.transform = `scale(${currentScale.toFixed(4)})`;
@@ -148,6 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const stackCards = document.querySelectorAll('.stack-card');
   function updateStackingEffects() {
+    if (window.innerWidth < 768) {
+      stackCards.forEach((card) => {
+        card.style.transform = '';
+        card.style.filter = '';
+      });
+      return;
+    }
     const stickyThreshold = window.innerWidth >= 1024 ? 125 : 90;
     stackCards.forEach((card, index) => {
       const rect = card.getBoundingClientRect();
