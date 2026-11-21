@@ -189,92 +189,175 @@
   <!-- MAIN SCROLL CONTAINER -->
   <main id="main">
 
-    <!-- 1. HERO SECTION -->
-    <section class="section-hero" id="hero">
-      <div class="hero-top-grid">
-        <!-- Left: Disciplinary Capability Stack -->
-        <div class="hero-col-left">
-          <span class="mono-tag">(Core Architectural Disciplines)</span>
-          <ul class="discipline-stack">
-            <li class="discipline-item"><span class="item-num">01</span> Deccan Columnar Basalt & Monolithic Casts</li>
-            <li class="discipline-item"><span class="item-num">02</span> Subterranean Stepwells & Hydro-Courts</li>
-            <li class="discipline-item"><span class="item-num">03</span> Anechoic Acoustic Chambers & Raga Vaults</li>
-            <li class="discipline-item"><span class="item-num">04</span> High-Inertia Thermal Mass (Zero Active HVAC)</li>
-            <li class="discipline-item"><span class="item-num">05</span> Kinetic Monsoon & Jali Solar Screens</li>
-            <li class="discipline-item"><span class="item-num">06</span> Bespoke Black Granite & Cast Bronze Furnishings</li>
-          </ul>
-        </div>
+    <!-- 1. HERO SECTION: STICKY SCALE-DOWN HERO CARD & DYNAMIC COLLAGE -->
+    <section class="section-hero-sticky" id="hero">
+      <div class="hero-sticky-track">
+        
+        <!-- Background Continuous Auto-Scrolling Architecture Collage -->
+        <div class="hero-collage-bg" aria-hidden="true">
+          <!-- Column 1: Upward Ticker -->
+          <div class="collage-col collage-col-1">
+            <div class="collage-track track-up">
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" alt="Konkan Coastal Monolith">
+                <div class="collage-card-overlay"><span>Konkan Basalt Monolith</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80" alt="Subterranean Stepwell">
+                <div class="collage-card-overlay"><span>Western Ghats Stepwell</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" alt="Alpine Quartzite Mass">
+                <div class="collage-card-overlay"><span>Valser Fels Alpine Mass</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=700&q=80" alt="Basalt Texture">
+                <div class="collage-card-overlay"><span>Volcanic Basalt Stratum</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=700&q=80" alt="Cyclopean Brutalism">
+                <div class="collage-card-overlay"><span>Monolithic Concrete Form</span></div>
+              </div>
 
-        <!-- Right: Manifesto Excerpt & Primary Magnetic CTA -->
-        <div class="hero-col-right">
-          <div class="hero-manifesto-card">
-            <span class="mono-tag">(Design Manifesto · Mumbai 2026)</span>
-            <p class="hero-statement">
-              Modern structures in the subcontinent are fragile glass towers that bake under the tropical sun. We carve immutable basalt sanctuaries, subterranean stepwells, and monolithic mass engineered for extreme monsoons, salt-fog, and five centuries of permanence.
-            </p>
-            <div class="hero-cta-wrap">
-              <button class="btn-pill btn-pill-dark magnetic-target open-commission-btn">
-                <span>Commission a Sanctuary</span>
-                <i data-lucide="arrow-up-right" class="btn-icon"></i>
-              </button>
-              <a href="#monoliths" class="btn-pill btn-pill-ghost magnetic-target">
-                <span>Explore Works (4)</span>
-              </a>
+              <!-- Duplicate for seamless infinite loop -->
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" alt="Konkan Coastal Monolith">
+                <div class="collage-card-overlay"><span>Konkan Basalt Monolith</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80" alt="Subterranean Stepwell">
+                <div class="collage-card-overlay"><span>Western Ghats Stepwell</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" alt="Alpine Quartzite Mass">
+                <div class="collage-card-overlay"><span>Valser Fels Alpine Mass</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=700&q=80" alt="Basalt Texture">
+                <div class="collage-card-overlay"><span>Volcanic Basalt Stratum</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=700&q=80" alt="Cyclopean Brutalism">
+                <div class="collage-card-overlay"><span>Monolithic Concrete Form</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Downward / Differential Speed Ticker -->
+          <div class="collage-col collage-col-2">
+            <div class="collage-track track-down">
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=700&q=80" alt="Thar Desert Citadel">
+                <div class="collage-card-overlay"><span>Thar Rammed Earth Citadel</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=700&q=80" alt="Kyoto Astrolabe Joinery">
+                <div class="collage-card-overlay"><span>Kanso Kyoto Joinery</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" alt="Hudson Obsidian Belvedere">
+                <div class="collage-card-overlay"><span>Hudson Obsidian Belvedere</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=700&q=80" alt="Monolithic Mass Shadows">
+                <div class="collage-card-overlay"><span>High-Inertia Shadow Cast</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="Hydraulic Reflection Pool">
+                <div class="collage-card-overlay"><span>Monsoon Hydraulic Court</span></div>
+              </div>
+
+              <!-- Duplicate for seamless infinite loop -->
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=700&q=80" alt="Thar Desert Citadel">
+                <div class="collage-card-overlay"><span>Thar Rammed Earth Citadel</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=700&q=80" alt="Kyoto Astrolabe Joinery">
+                <div class="collage-card-overlay"><span>Kanso Kyoto Joinery</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" alt="Hudson Obsidian Belvedere">
+                <div class="collage-card-overlay"><span>Hudson Obsidian Belvedere</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=700&q=80" alt="Monolithic Mass Shadows">
+                <div class="collage-card-overlay"><span>High-Inertia Shadow Cast</span></div>
+              </div>
+              <div class="collage-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="Hydraulic Reflection Pool">
+                <div class="collage-card-overlay"><span>Monsoon Hydraulic Court</span></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Center Subtle Grid Crosshair Alignment -->
-      <div class="hero-crosshairs">
-        <div class="crosshair-center">
-          <span class="coord-label">[18.9220° N, 72.8346° E · NARIMAN POINT, MUMBAI · ELEVATION +14M]</span>
-          <span class="crosshair-plus">+</span>
-          <span class="coord-status">IS-1893 SEISMIC ZONE IV/V APPROVED</span>
-        </div>
-      </div>
+        <!-- Central Shrinking Hero Main Card -->
+        <div class="hero-scale-wrapper" id="heroScaleWrapper">
+          <div class="hero-main-card" id="heroMainCard">
+            <div class="hero-card-inner">
+              
+              <div class="hero-card-grid">
+                <!-- Left: Disciplinary Craft -->
+                <div class="hero-card-col hero-card-services">
+                  <span class="mono-tag">(Core Disciplines)</span>
+                  <ul class="hero-services-list">
+                    <li>Deccan Basalt Monoliths</li>
+                    <li>Subterranean Stepwells</li>
+                    <li>Anechoic Acoustic Chambers</li>
+                    <li>High-Inertia Thermal Mass</li>
+                    <li>Kinetic Monsoon Screens</li>
+                    <li>Five-Century Joinery</li>
+                  </ul>
+                </div>
 
-      <!-- Giant Fluid Wordmark -->
-      <div class="hero-wordmark-container">
-        <h1 class="hero-wordmark">VALENCE</h1>
-        <div class="hero-wordmark-sub">
-          <span>GLOBAL HEADQUARTERS: MUMBAI, INDIA</span>
-          <span class="separator">/</span>
-          <span>ZURICH · KYOTO · NEW YORK</span>
-        </div>
-      </div>
+                <!-- Center: The 4 Signature Minimal Dots -->
+                <div class="hero-card-col hero-card-dots" aria-hidden="true">
+                  <span class="hero-dot"></span>
+                  <span class="hero-dot"></span>
+                  <span class="hero-dot"></span>
+                  <span class="hero-dot"></span>
+                </div>
 
-      <!-- Hero Parallax Showcase Deck -->
-      <div class="hero-cards-preview">
-        <div class="preview-card card-left">
-          <div class="preview-img-wrap">
-            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=85" alt="Konkan Coastal Basalt Monolith" loading="eager">
+                <!-- Right: Manifesto Statement & CTA -->
+                <div class="hero-card-col hero-card-statement">
+                  <span class="mono-tag">(Design Manifesto · Mumbai 2026)</span>
+                  <p class="hero-statement-lead">
+                    We carve immutable geological sanctuaries, subterranean stepwells, and monumental stone mass engineered for extreme monsoons, salt-fog, and five centuries of permanence.
+                  </p>
+                  <p class="hero-statement-punchline">Less talk. More mass.</p>
+                  <div class="hero-card-cta">
+                    <button class="btn-pill btn-pill-dark open-commission-btn magnetic-target">
+                      <span>Initiate Dialogue</span>
+                      <i data-lucide="arrow-up-right" class="btn-icon"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Row: Logotype & Attribution -->
+              <div class="hero-card-footer">
+                <div class="hero-brand-block">
+                  <h1 class="hero-brand-name">VALENCE</h1>
+                  <span class="hero-brand-desc">A Monolithic Architecture Atelier</span>
+                </div>
+                <div class="hero-brand-meta">
+                  <span>©2026 Valence Spatial Atelier · Mumbai Global HQ</span>
+                </div>
+              </div>
+
+            </div>
           </div>
-          <div class="preview-meta">
-            <span class="preview-title">Konkan Basalt Monolith</span>
-            <span class="mono-tag">Alibaug, Maharashtra</span>
+
+          <!-- The Floating Capsule "Scroll Down" Pill with Interactive Progress Fill -->
+          <div class="hero-scroll-capsule" id="heroScrollCapsule">
+            <span class="capsule-text">Scroll Down</span>
+            <div class="capsule-progress-track">
+              <div class="capsule-progress-fill" id="heroProgressFill"></div>
+            </div>
           </div>
         </div>
 
-        <div class="preview-card card-center">
-          <div class="preview-img-wrap">
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85" alt="Western Ghats Stepwell Vault" loading="eager">
-          </div>
-          <div class="preview-meta">
-            <span class="preview-title">Western Ghats Stepwell</span>
-            <span class="mono-tag">Khandala Escarpment, IN</span>
-          </div>
-        </div>
-
-        <div class="preview-card card-right">
-          <div class="preview-img-wrap">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85" alt="Valser Fels Alpine Monolith" loading="eager">
-          </div>
-          <div class="preview-meta">
-            <span class="preview-title">Valser Fels Alpine</span>
-            <span class="mono-tag">Graubünden, CH</span>
-          </div>
-        </div>
       </div>
     </section>
 
