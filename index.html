@@ -44,10 +44,13 @@
       </a>
 
       <nav class="desktop-nav">
-        <a href="#monoliths" class="nav-link magnetic-target">Sanctuaries <sup>(04)</sup></a>
+        <a href="#monoliths" class="nav-link magnetic-target">Sanctuaries <sup>(06)</sup></a>
         <a href="#philosophy" class="nav-link magnetic-target">Doctrine</a>
-        <a href="#material-lab" class="nav-link magnetic-target">Material Lab</a>
+        <a href="#disciplines" class="nav-link magnetic-target">Disciplines</a>
         <a href="#telemetry" class="nav-link magnetic-target">Telemetry</a>
+        <a href="#endorsements" class="nav-link magnetic-target">Endorsements</a>
+        <a href="#material-lab" class="nav-link magnetic-target">Material Lab</a>
+        <a href="#protocol" class="nav-link magnetic-target">Protocol</a>
         <a href="#monographs" class="nav-link magnetic-target">Monographs</a>
       </nav>
 
@@ -78,11 +81,14 @@
     <div class="drawer-body">
       <ul class="drawer-links">
         <li><a href="#hero" class="drawer-link" data-index="01">Overview</a></li>
-        <li><a href="#monoliths" class="drawer-link" data-index="02">Monoliths & Sanctuaries</a></li>
+        <li><a href="#monoliths" class="drawer-link" data-index="02">Monoliths & Sanctuaries (06)</a></li>
         <li><a href="#philosophy" class="drawer-link" data-index="03">Spatial Doctrine</a></li>
-        <li><a href="#material-lab" class="drawer-link" data-index="04">Materiality Studio</a></li>
+        <li><a href="#disciplines" class="drawer-link" data-index="04">Architectural Disciplines</a></li>
         <li><a href="#telemetry" class="drawer-link" data-index="05">Structural Telemetry</a></li>
-        <li><a href="#monographs" class="drawer-link" data-index="06">Critical Monographs</a></li>
+        <li><a href="#endorsements" class="drawer-link" data-index="06">Sovereign Endorsements</a></li>
+        <li><a href="#material-lab" class="drawer-link" data-index="07">Materiality Studio</a></li>
+        <li><a href="#protocol" class="drawer-link" data-index="08">Commission Protocol</a></li>
+        <li><a href="#monographs" class="drawer-link" data-index="09">Critical Monographs</a></li>
       </ul>
 
       <div class="drawer-footer">
@@ -310,16 +316,17 @@
         <aside class="monoliths-sidebar">
           <div class="sticky-sidebar-content">
             <span class="mono-tag">(Sanctuary Archive 26©)</span>
-            <h2 class="sidebar-heading">Monoliths <span class="accent-count">(4)</span></h2>
+            <h2 class="sidebar-heading">Monoliths <span class="accent-count">(6)</span></h2>
             <p class="sidebar-desc">
-              Four architectural interventions carved into extreme topographies. Each project is engineered with high thermal inertia, local geological stone, and zero cosmetic finishes.
+              Six architectural interventions carved into extreme topographies. Each project is engineered with high thermal inertia, local geological stone, and zero cosmetic finishes.
             </p>
 
-            <div class="sidebar-filters">
-              <span class="filter-pill active">All Sanctuaries</span>
-              <span class="filter-pill">Coastal Basalt</span>
-              <span class="filter-pill">Subterranean Stepwells</span>
-              <span class="filter-pill">Alpine Mass</span>
+            <div class="sidebar-filters" id="monolithFilters">
+              <button class="filter-pill active" data-category="all">All Sanctuaries (06)</button>
+              <button class="filter-pill" data-category="basalt">Volcanic Basalt (02)</button>
+              <button class="filter-pill" data-category="stepwell">Stepwell Vaults (01)</button>
+              <button class="filter-pill" data-category="alpine">Alpine Mass (02)</button>
+              <button class="filter-pill" data-category="desert">Desert Earth (01)</button>
             </div>
 
             <div class="sidebar-action">
@@ -340,11 +347,11 @@
         <div class="stacking-deck" id="stackingDeck">
 
           <!-- Card 01: Konkan Basalt Monolith -->
-          <article class="stack-card" id="card-01" data-index="01">
+          <article class="stack-card" id="card-01" data-index="01" data-category="basalt">
             <div class="stack-card-inner">
               <div class="stack-card-header">
                 <div class="card-title-group">
-                  <span class="mono-tag">(Archive No. 01/04 · Flagship India)</span>
+                  <span class="mono-tag">(Archive No. 01/06 · Flagship India)</span>
                   <h3 class="card-title">Konkan Basalt Monolith</h3>
                   <span class="card-location">Alibaug Coastal Bluff, Maharashtra, India</span>
                 </div>
@@ -356,7 +363,7 @@
 
               <div class="stack-media-wrap">
                 <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1600&q=85" alt="Konkan Coastal Basalt Monolith" class="stack-img">
-                <div class="media-overlay-pill">
+                <div class="media-overlay-pill open-blueprint-btn" data-blueprint="konkan">
                   <i data-lucide="maximize-2"></i>
                   <span>Inspect Coastal Cantilever Blueprints</span>
                 </div>
@@ -386,11 +393,11 @@
           </article>
 
           <!-- Card 02: Western Ghats Stepwell Vault -->
-          <article class="stack-card" id="card-02" data-index="02">
+          <article class="stack-card" id="card-02" data-index="02" data-category="stepwell">
             <div class="stack-card-inner">
               <div class="stack-card-header">
                 <div class="card-title-group">
-                  <span class="mono-tag">(Archive No. 02/04 · Subterranean India)</span>
+                  <span class="mono-tag">(Archive No. 02/06 · Subterranean India)</span>
                   <h3 class="card-title">Western Ghats Stepwell Vault</h3>
                   <span class="card-location">Khandala Escarpment, Maharashtra, India</span>
                 </div>
@@ -402,7 +409,7 @@
 
               <div class="stack-media-wrap">
                 <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1600&q=85" alt="Western Ghats Stepwell Vault" class="stack-img">
-                <div class="media-overlay-pill">
+                <div class="media-overlay-pill open-blueprint-btn" data-blueprint="ghats">
                   <i data-lucide="maximize-2"></i>
                   <span>Inspect Acoustic Raga Vault</span>
                 </div>
@@ -432,11 +439,11 @@
           </article>
 
           <!-- Card 03: Valser Fels Alpine Pavilion -->
-          <article class="stack-card" id="card-03" data-index="03">
+          <article class="stack-card" id="card-03" data-index="03" data-category="alpine">
             <div class="stack-card-inner">
               <div class="stack-card-header">
                 <div class="card-title-group">
-                  <span class="mono-tag">(Archive No. 03/04 · Swiss Atelier)</span>
+                  <span class="mono-tag">(Archive No. 03/06 · Swiss Atelier)</span>
                   <h3 class="card-title">Valser Fels Pavilion</h3>
                   <span class="card-location">Graubünden Canton, Switzerland</span>
                 </div>
@@ -448,7 +455,7 @@
 
               <div class="stack-media-wrap">
                 <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=85" alt="Valser Fels Alpine Monolith" class="stack-img">
-                <div class="media-overlay-pill">
+                <div class="media-overlay-pill open-blueprint-btn" data-blueprint="valser">
                   <i data-lucide="maximize-2"></i>
                   <span>Inspect Bedrock Pinning Blueprints</span>
                 </div>
@@ -478,11 +485,11 @@
           </article>
 
           <!-- Card 04: Kanso Subterranean Vault -->
-          <article class="stack-card" id="card-04" data-index="04">
+          <article class="stack-card" id="card-04" data-index="04" data-category="basalt">
             <div class="stack-card-inner">
               <div class="stack-card-header">
                 <div class="card-title-group">
-                  <span class="mono-tag">(Archive No. 04/04 · Kyoto Atelier)</span>
+                  <span class="mono-tag">(Archive No. 04/06 · Kyoto Atelier)</span>
                   <h3 class="card-title">Kanso Subterranean Vault</h3>
                   <span class="card-location">Kyoto Western Foothills, Japan</span>
                 </div>
@@ -494,7 +501,7 @@
 
               <div class="stack-media-wrap">
                 <img src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1600&q=85" alt="Kanso Subterranean Vault Kyoto" class="stack-img">
-                <div class="media-overlay-pill">
+                <div class="media-overlay-pill open-blueprint-btn" data-blueprint="kanso">
                   <i data-lucide="maximize-2"></i>
                   <span>Inspect Kinetic Astrolabe Aperture</span>
                 </div>
@@ -512,6 +519,98 @@
                 <div class="spec-col">
                   <span class="spec-label">Structural Warrant</span>
                   <span class="spec-val">500-Year Generational Pact</span>
+                </div>
+                <div class="spec-col action-col">
+                  <button class="spec-detail-btn magnetic-target open-commission-btn">
+                    <span>Inquire Access</span>
+                    <i data-lucide="arrow-up-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 05: Thar Desert Rammed Earth Citadel -->
+          <article class="stack-card" id="card-05" data-index="05" data-category="desert">
+            <div class="stack-card-inner">
+              <div class="stack-card-header">
+                <div class="card-title-group">
+                  <span class="mono-tag">(Archive No. 05/06 · Desert Bioclimatic)</span>
+                  <h3 class="card-title">Thar Desert Rammed Earth Citadel</h3>
+                  <span class="card-location">Jaisalmer Outer Dunes, Rajasthan, India</span>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Compacted Caliche Clay</span>
+                  <span class="card-tag">Wind-Catcher Jali Towers</span>
+                </div>
+              </div>
+
+              <div class="stack-media-wrap">
+                <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=85" alt="Thar Desert Rammed Earth Citadel" class="stack-img">
+                <div class="media-overlay-pill open-blueprint-btn" data-blueprint="thar">
+                  <i data-lucide="maximize-2"></i>
+                  <span>Inspect Wind-Catcher Jali Blueprints</span>
+                </div>
+              </div>
+
+              <div class="stack-card-specs">
+                <div class="spec-col">
+                  <span class="spec-label">Thermal Mass</span>
+                  <span class="spec-val">2,400 Tonnes Compacted Caliche</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Diurnal Temperature Buffer</span>
+                  <span class="spec-val">18°C Natural Cooling Delta</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Acoustic Rating</span>
+                  <span class="spec-val">NC-10 (Anechoic Stillness)</span>
+                </div>
+                <div class="spec-col action-col">
+                  <button class="spec-detail-btn magnetic-target open-commission-btn">
+                    <span>Inquire Access</span>
+                    <i data-lucide="arrow-up-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 06: Hudson Highlands Cast Obsidian Belvedere -->
+          <article class="stack-card" id="card-06" data-index="06" data-category="alpine">
+            <div class="stack-card-inner">
+              <div class="stack-card-header">
+                <div class="card-title-group">
+                  <span class="mono-tag">(Archive No. 06/06 · Americas Liaison)</span>
+                  <h3 class="card-title">Hudson Highlands Obsidian Belvedere</h3>
+                  <span class="card-location">Cold Spring Escarpment, New York, USA</span>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Cast Volcanic Glass</span>
+                  <span class="card-tag">Bedrock Titanium Anchors</span>
+                </div>
+              </div>
+
+              <div class="stack-media-wrap">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=85" alt="Hudson Highlands Obsidian Belvedere" class="stack-img">
+                <div class="media-overlay-pill open-blueprint-btn" data-blueprint="hudson">
+                  <i data-lucide="maximize-2"></i>
+                  <span>Inspect Bedrock Cantilever Blueprints</span>
+                </div>
+              </div>
+
+              <div class="stack-card-specs">
+                <div class="spec-col">
+                  <span class="spec-label">Seismic Tuned Mass</span>
+                  <span class="spec-val">480 Tonnes Vitrified Glass</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Tensile Cantilever</span>
+                  <span class="spec-val">14.2m Unsupported Overlook</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">Structural Warrant</span>
+                  <span class="spec-val">500-Year Generational Deed</span>
                 </div>
                 <div class="spec-col action-col">
                   <button class="spec-detail-btn magnetic-target open-commission-btn">
@@ -583,6 +682,125 @@
       </div>
     </section>
 
+    <!-- 4B. ARCHITECTURAL DISCIPLINES & CAPABILITIES (BBMH-STYLE CAPABILITIES CARDS) -->
+    <section class="section-disciplines" id="disciplines">
+      <div class="disciplines-header">
+        <div>
+          <span class="mono-tag">(Capabilities & Spatial Disciplines)</span>
+          <h2 class="disciplines-title">Form Follows Permanence</h2>
+        </div>
+        <p class="disciplines-sub">
+          We operate across four specialized architectural disciplines engineered to withstand half a millennium of environmental exposure.
+        </p>
+      </div>
+
+      <div class="disciplines-grid">
+        <!-- Discipline Card 01 -->
+        <div class="discipline-card">
+          <div class="disc-card-top">
+            <span class="disc-num">01</span>
+            <span class="disc-tag">Subterranean Engineering</span>
+          </div>
+          <div class="disc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=900&q=85" alt="Subterranean Bedrock Excavation" class="disc-img" loading="lazy">
+          </div>
+          <h3 class="disc-heading">Bedrock Excavation & Microclimate Vaults</h3>
+          <p class="disc-p">
+            Deep-stratum core drilling into granitic bedrock to engineer subterranean stepwells and living sanctuaries that leverage Earth’s natural geothermal mass, maintaining stable 20°C interiors during 45°C summers without artificial energy.
+          </p>
+          <ul class="disc-checklist">
+            <li><i data-lucide="check"></i> 12–18m Bedrock Core Stabilisation</li>
+            <li><i data-lucide="check"></i> Hydrostatic Groundwater Heat-Sinks</li>
+            <li><i data-lucide="check"></i> Zero-Mechanical Passive Convection</li>
+          </ul>
+          <div class="disc-footer">
+            <span class="mono-tag">Duration: 14–22 Months</span>
+            <button class="disc-expand-btn open-commission-btn magnetic-target" aria-label="Inquire Discipline">
+              <i data-lucide="arrow-up-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Discipline Card 02 -->
+        <div class="discipline-card">
+          <div class="disc-card-top">
+            <span class="disc-num">02</span>
+            <span class="disc-tag">Acoustic Architecture</span>
+          </div>
+          <div class="disc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=900&q=85" alt="Acoustic Raga Sanctuary" class="disc-img" loading="lazy">
+          </div>
+          <h3 class="disc-heading">Anechoic Classical Raga Sanctuaries</h3>
+          <p class="disc-p">
+            Calculated non-parallel acoustic chambers lined with micro-textured Deccan basalt. Engineered specifically for Indian Classical strings (sitar, sarod, surbahar) and meditative vocal resonance with zero flutter reverberation.
+          </p>
+          <ul class="disc-checklist">
+            <li><i data-lucide="check"></i> Noise Criterion NC-10 to NC-12</li>
+            <li><i data-lucide="check"></i> Non-Parallel Geometry Decay Modeling</li>
+            <li><i data-lucide="check"></i> 100% Inert Uncoated Stone Reflections</li>
+          </ul>
+          <div class="disc-footer">
+            <span class="mono-tag">Duration: 8–14 Months</span>
+            <button class="disc-expand-btn open-commission-btn magnetic-target" aria-label="Inquire Discipline">
+              <i data-lucide="arrow-up-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Discipline Card 03 -->
+        <div class="discipline-card">
+          <div class="disc-card-top">
+            <span class="disc-num">03</span>
+            <span class="disc-tag">Cyclopean Stonework</span>
+          </div>
+          <div class="disc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=85" alt="Cyclopean Dry-Stack Stone" class="disc-img" loading="lazy">
+          </div>
+          <h3 class="disc-heading">Mortarless Cyclopean Stone Masonry</h3>
+          <p class="disc-p">
+            Multi-tonne monolithic blocks extracted from sovereign quarries, waterjet milled with sub-millimeter tolerances and dry-stacked with interlocking seismic keys. No chemical sealants or mortal compounds that erode over time.
+          </p>
+          <ul class="disc-checklist">
+            <li><i data-lucide="check"></i> Sub-Millimeter Gravity Key Joints</li>
+            <li><i data-lucide="check"></i> 65-Million-Year Deccan Trap Basalt</li>
+            <li><i data-lucide="check"></i> Zero Cosmetic Finishes or Cladding</li>
+          </ul>
+          <div class="disc-footer">
+            <span class="mono-tag">Duration: 18–30 Months</span>
+            <button class="disc-expand-btn open-commission-btn magnetic-target" aria-label="Inquire Discipline">
+              <i data-lucide="arrow-up-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Discipline Card 04 -->
+        <div class="discipline-card">
+          <div class="disc-card-top">
+            <span class="disc-num">04</span>
+            <span class="disc-tag">Celestial Heliostats</span>
+          </div>
+          <div class="disc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=900&q=85" alt="Celestial Solar Aperture" class="disc-img" loading="lazy">
+          </div>
+          <h3 class="disc-heading">Solar Solstice Astrolabes & Light Funnels</h3>
+          <p class="disc-p">
+            Astronomically aligned roof oculus systems and counterbalanced titanium light funnels that channel narrow shafts of sunbeam across deep interiors during summer and winter equinoxes, transforming sunlight into a living clock.
+          </p>
+          <ul class="disc-checklist">
+            <li><i data-lucide="check"></i> Equinoctial Azimuth Alignment</li>
+            <li><i data-lucide="check"></i> Counterweighted Aerospace Titanium</li>
+            <li><i data-lucide="check"></i> Passive Vertical Solar Convection</li>
+          </ul>
+          <div class="disc-footer">
+            <span class="mono-tag">Duration: 10–16 Months</span>
+            <button class="disc-expand-btn open-commission-btn magnetic-target" aria-label="Inquire Discipline">
+              <i data-lucide="arrow-up-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 5. TELEMETRY & SPECIFICATIONS (DARK BRUTALIST METRICS) -->
     <section class="section-telemetry" id="telemetry">
       <div class="telemetry-header">
@@ -641,6 +859,112 @@
           <div class="card-meta-row">
             <span class="mono-tag">Energy Autonomy: 100%</span>
             <span class="mono-tag">GRIHA 5-Star / ISO 14044</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5B. PATRON REVIEWS & SOVEREIGN REVIEWS (BBMH-STYLE TESTIMONIALS CARDS) -->
+    <section class="section-endorsements" id="endorsements">
+      <div class="endorsements-header">
+        <div>
+          <span class="mono-tag">(Verified Patron Testimonials · 2019–2026 Archive)</span>
+          <h2 class="endorsements-title">Sovereign Endorsements</h2>
+        </div>
+        <div class="endorsements-nav-arrows">
+          <button class="nav-arrow-btn magnetic-target" id="endorsePrevBtn" aria-label="Previous Testimonial">
+            <i data-lucide="arrow-left"></i>
+          </button>
+          <button class="nav-arrow-btn magnetic-target" id="endorseNextBtn" aria-label="Next Testimonial">
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="endorsements-track-wrap">
+        <div class="endorsements-track" id="endorsementsTrack">
+          <!-- Testimonial Card 01 -->
+          <div class="endorsement-card">
+            <div class="endorse-top">
+              <div class="endorse-seal">
+                <span class="seal-icon">🏛</span>
+                <span class="mono-tag">PIRAMAL SPATIAL TRUST</span>
+              </div>
+              <span class="commission-year">2024 ARCHIVE</span>
+            </div>
+            <blockquote class="endorse-quote">
+              “Valence does not apply finishes. The stone mass itself is the structure, the finish, and the insulation. Our Alibaug coastal sanctuary remained 21°C during a 42°C monsoon heatwave without turning on backup generators. An untouchable standard of integrity.”
+            </blockquote>
+            <div class="endorse-author">
+              <div class="author-avatar">P</div>
+              <div>
+                <strong class="author-name">Dr. Radhika Piramal</strong>
+                <span class="author-role">Trustee, Piramal Spatial Arts Foundation · Alibaug Monolith Commission</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 02 -->
+          <div class="endorsement-card">
+            <div class="endorse-top">
+              <div class="endorse-seal">
+                <span class="seal-icon">⚡</span>
+                <span class="mono-tag">TATA HERITAGE FELLOW</span>
+              </div>
+              <span class="commission-year">2022 ARCHIVE</span>
+            </div>
+            <blockquote class="endorse-quote">
+              “In a world where luxury has been debased into paper-thin veneers and drywall, Valence built us an immutable granite stepwell that our great-grandchildren will inherit completely intact. The weight of the stone commands absolute reverence.”
+            </blockquote>
+            <div class="endorse-author">
+              <div class="author-avatar">T</div>
+              <div>
+                <strong class="author-name">Cyrus J. Tata</strong>
+                <span class="author-role">Senior Fellow, Tata Architectural Conservation · Khandala Vault Commission</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 03 -->
+          <div class="endorsement-card">
+            <div class="endorse-top">
+              <div class="endorse-seal">
+                <span class="seal-icon">🏔</span>
+                <span class="mono-tag">ROTHSCHILD-VAUD OFFICE</span>
+              </div>
+              <span class="commission-year">2023 ARCHIVE</span>
+            </div>
+            <blockquote class="endorse-quote">
+              “The bush-hammered concrete at 1,940 meters in Vals has withstood three consecutive arctic alpine winters without a hairline crack. Their understanding of cold-climate thermal lag and bedrock pinning is peerless globally.”
+            </blockquote>
+            <div class="endorse-author">
+              <div class="author-avatar">R</div>
+              <div>
+                <strong class="author-name">Baron Henri de Vaud</strong>
+                <span class="author-role">Principal, Rothschild-Vaud Sovereign Office · Swiss Atelier Commission</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 04 -->
+          <div class="endorsement-card">
+            <div class="endorse-top">
+              <div class="endorse-seal">
+                <span class="seal-icon">⛩</span>
+                <span class="mono-tag">KYOTO PRESERVATION GUILD</span>
+              </div>
+              <span class="commission-year">2025 ARCHIVE</span>
+            </div>
+            <blockquote class="endorse-quote">
+              “Zero metal fasteners. 100-year cured Hinoki. Mortise and tenon joinery that moves seamlessly with subterranean seismic shifts. Valence harmonizes ancient Japanese joinery with brutalist geological permanence.”
+            </blockquote>
+            <div class="endorse-author">
+              <div class="author-avatar">K</div>
+              <div>
+                <strong class="author-name">Master Kenzo Fujiwara</strong>
+                <span class="author-role">Cultural Overseer, Higashiyama Heritage Guild · Kyoto Studio Commission</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -763,6 +1087,77 @@
                 <strong id="dossierAcoustic">0.24 αw (Specular Purity)</strong>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6B. THE FIVE-CENTURY COMMISSION PROTOCOL (BBMH-STYLE PROCESS CARDS) -->
+    <section class="section-protocol" id="protocol">
+      <div class="protocol-header">
+        <div>
+          <span class="mono-tag">(Intake Protocol · Maximum 3 Commissions / Year)</span>
+          <h2 class="protocol-title">The Five-Century Commission Protocol</h2>
+        </div>
+        <p class="protocol-sub">
+          Every commission is an irreversible geological commitment. We follow a strict four-stage protocol to guarantee five centuries of structural stability.
+        </p>
+      </div>
+
+      <div class="protocol-cards-grid">
+        <!-- Stage 01 -->
+        <div class="protocol-card">
+          <div class="protocol-step-badge">STAGE 01</div>
+          <span class="protocol-timeline">Month 1–3</span>
+          <h3 class="protocol-card-title">Geological Core Drilling & Solar Heliotropy</h3>
+          <p class="protocol-card-desc">
+            We extract 40-meter bedrock core samples to measure shear strength, groundwater hydrology, and seismic fault resonance. Simultaneous year-round solar trajectory modeling determines aperture angles.
+          </p>
+          <div class="protocol-tags">
+            <span class="proto-tag">IS-1893 Seismic Audit</span>
+            <span class="proto-tag">Bedrock Core Log</span>
+          </div>
+        </div>
+
+        <!-- Stage 02 -->
+        <div class="protocol-card">
+          <div class="protocol-step-badge">STAGE 02</div>
+          <span class="protocol-timeline">Month 4–7</span>
+          <h3 class="protocol-card-title">Thermal Fluid Dynamics & Microclimate Modeling</h3>
+          <p class="protocol-card-desc">
+            The structure is digitally subjected to 500-year simulated weather cycles: tropical monsoonal deluges, 48°C coastal heatwaves, and seismic shockwaves. Thermal lag is tuned to hold interior temperatures at 20°C naturally.
+          </p>
+          <div class="protocol-tags">
+            <span class="proto-tag">CFD Microclimate Model</span>
+            <span class="proto-tag">FEA Stress Analysis</span>
+          </div>
+        </div>
+
+        <!-- Stage 03 -->
+        <div class="protocol-card">
+          <div class="protocol-step-badge">STAGE 03</div>
+          <span class="protocol-timeline">Month 8–18</span>
+          <h3 class="protocol-card-title">Cyclopean Quarrying & Hand-Dressed Masonry</h3>
+          <p class="protocol-card-desc">
+            Direct extraction of multi-tonne basalt blocks from designated Deccan quarry veins. Master stonemasons dress every block with pneumatic waterjets and hand chisels to achieve friction-fit gravity joinery.
+          </p>
+          <div class="protocol-tags">
+            <span class="proto-tag">Zero Synthetic Adhesives</span>
+            <span class="proto-tag">Sub-Millimeter Tolerances</span>
+          </div>
+        </div>
+
+        <!-- Stage 04 -->
+        <div class="protocol-card">
+          <div class="protocol-step-badge">STAGE 04</div>
+          <span class="protocol-timeline">Month 19+</span>
+          <h3 class="protocol-card-title">Generational Handover & Five-Century Deed</h3>
+          <p class="protocol-card-desc">
+            Commissioning complete. The structure is inscribed with sovereign coordinates and sealed with a registered 500-year structural deed, accompanied by an archival titanium blueprint canister for your family office.
+          </p>
+          <div class="protocol-tags">
+            <span class="proto-tag">Titanium Blueprint Deed</span>
+            <span class="proto-tag">500-Year Generational Pact</span>
           </div>
         </div>
       </div>
@@ -938,6 +1333,74 @@
     </footer>
 
   </main>
+
+  <!-- Interactive Architectural Blueprint & CAD Elevation Lightbox Modal -->
+  <div class="blueprint-modal" id="blueprintModal" role="dialog" aria-modal="true" aria-label="Architectural Blueprint Dossier">
+    <div class="blueprint-overlay" id="blueprintOverlay"></div>
+    <div class="blueprint-dialog">
+      <div class="blueprint-header">
+        <div class="bp-title-wrap">
+          <span class="mono-tag" id="bpSubTag">(CAD Schematic Elevation · Sub-Bedrock Strata)</span>
+          <h3 class="bp-heading" id="bpTitle">Konkan Basalt Monolith — Structural Cross-Section</h3>
+        </div>
+        <button class="blueprint-close-btn" id="blueprintCloseBtn" aria-label="Close Blueprint">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="blueprint-body">
+        <div class="blueprint-canvas-wrap">
+          <div class="blueprint-grid-bg"></div>
+          <svg class="blueprint-svg" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="50" y1="50" x2="750" y2="50" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" />
+            <line x1="50" y1="150" x2="750" y2="150" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" />
+            <line x1="50" y1="250" x2="750" y2="250" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" />
+            <line x1="50" y1="350" x2="750" y2="350" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" />
+            
+            <path d="M 50 320 Q 200 300 350 330 T 750 310" stroke="#10B981" stroke-width="2" />
+            <text x="60" y="310" fill="#10B981" font-family="monospace" font-size="11">DATUM 0.00m (BEDROCK BASALT STRATUM)</text>
+            
+            <rect x="220" y="160" width="360" height="180" stroke="#FFFFFF" stroke-width="2.5" fill="rgba(255,255,255,0.03)" />
+            <polygon points="220,160 120,200 220,240" stroke="#FFFFFF" stroke-width="2" fill="rgba(255,255,255,0.05)" />
+            <text x="90" y="180" fill="#E2E8F0" font-family="monospace" font-size="11">CANTILEVER 14.2M</text>
+            
+            <line x1="280" y1="200" x2="520" y2="200" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+            <line x1="310" y1="240" x2="490" y2="240" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+            <line x1="340" y1="280" x2="460" y2="280" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+            <text x="330" y="270" fill="#94A3B8" font-family="monospace" font-size="10">STEPWELL RAGA VAULT -11.4M</text>
+            
+            <line x1="220" y1="140" x2="580" y2="140" stroke="#38BDF8" stroke-width="1" />
+            <line x1="220" y1="135" x2="220" y2="145" stroke="#38BDF8" stroke-width="1" />
+            <line x1="580" y1="135" x2="580" y2="145" stroke="#38BDF8" stroke-width="1" />
+            <text x="370" y="132" fill="#38BDF8" font-family="monospace" font-size="11">36.00 METRES</text>
+
+            <circle cx="260" cy="340" r="6" fill="#F59E0B" />
+            <circle cx="540" cy="340" r="6" fill="#F59E0B" />
+            <text x="560" y="344" fill="#F59E0B" font-family="monospace" font-size="10">IS-1893 ANCHOR PIN</text>
+          </svg>
+        </div>
+
+        <div class="blueprint-meta-bar">
+          <div class="bp-stat">
+            <span class="bp-stat-label">TOLERANCE SPECIFICATION</span>
+            <span class="bp-stat-val">±0.45mm CNC Hydro-cut</span>
+          </div>
+          <div class="bp-stat">
+            <span class="bp-stat-label">THERMAL INERTIA LAG</span>
+            <span class="bp-stat-val">72.4 Hours Constant</span>
+          </div>
+          <div class="bp-stat">
+            <span class="bp-stat-label">SEISMIC SHEAR COEFFICIENT</span>
+            <span class="bp-stat-val">Ah = 0.36 (Zone V)</span>
+          </div>
+          <div class="bp-stat">
+            <span class="bp-stat-label">ACOUSTIC REVERBERATION</span>
+            <span class="bp-stat-val">0.38s Anechoic Purity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Application JS Engine -->
   <script src="app.js"></script>

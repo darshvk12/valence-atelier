@@ -1217,6 +1217,23 @@ body.cursor-project .cursor-badge {
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   opacity: 1; /* Always visible on mobile for discoverability */
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: auto;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.media-overlay-pill:hover {
+  background-color: #FFFFFF;
+  color: #0E0F12;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.media-overlay-pill:active {
+  transform: translateY(0);
 }
 
 .media-overlay-pill svg {
@@ -2287,4 +2304,613 @@ body.cursor-project .cursor-badge {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: #FFFFFF;
+}
+
+/* ==========================================================================
+   16. RICH EXPANSIONS: DISCIPLINES, ENDORSEMENTS, PROTOCOL & BLUEPRINT MODAL
+   ========================================================================== */
+
+/* --- Filter Pills in Monoliths Sidebar --- */
+.sidebar-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.filter-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.filter-pill:hover {
+  border-color: var(--text-main);
+  color: var(--text-main);
+}
+
+.filter-pill.active {
+  background-color: var(--bg-dark-obsidian);
+  color: #FFFFFF;
+  border-color: var(--bg-dark-obsidian);
+}
+
+.stack-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.stack-card.card-filtered-out {
+  display: none !important;
+}
+
+/* --- Section: Architectural Disciplines & Capabilities --- */
+.section-disciplines {
+  padding: 100px var(--pad-x);
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-light);
+}
+
+.disciplines-header {
+  margin-bottom: 50px;
+}
+
+.disciplines-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  letter-spacing: -0.03em;
+  margin-top: 12px;
+  line-height: 1.05;
+}
+
+.disciplines-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.disciplines-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .disciplines-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+.discipline-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--trans-medium), box-shadow var(--trans-medium), border-color var(--trans-fast);
+}
+
+.discipline-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(14, 15, 18, 0.25);
+}
+
+.disc-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.disc-num {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.disc-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(14, 15, 18, 0.05);
+}
+
+.disc-img-wrap {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius-card-sm);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.disc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.discipline-card:hover .disc-img {
+  transform: scale(1.05);
+}
+
+.disc-heading {
+  font-family: var(--font-headline);
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.disc-p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.disc-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.disc-checklist li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+}
+
+.disc-checklist li i {
+  width: 14px;
+  height: 14px;
+  color: #10B981;
+}
+
+.disc-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.disc-expand-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.disc-expand-btn:hover {
+  background-color: var(--bg-dark-obsidian);
+  color: #FFFFFF;
+  border-color: var(--bg-dark-obsidian);
+}
+
+/* --- Section: Patron Endorsements (Horizontal Carousel Cards) --- */
+.section-endorsements {
+  padding: 100px var(--pad-x);
+  background-color: var(--bg-dark-obsidian);
+  color: var(--text-dark-main);
+  border-top: 1px solid var(--border-dark);
+  overflow: hidden;
+}
+
+.endorsements-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.endorsements-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  letter-spacing: -0.03em;
+  margin-top: 10px;
+}
+
+.endorsements-nav-arrows {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-arrow-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border-dark);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.nav-arrow-btn:hover {
+  background-color: #FFFFFF;
+  color: var(--bg-dark-obsidian);
+}
+
+.endorsements-track-wrap {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 20px;
+}
+
+.endorsements-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.endorsements-track {
+  display: flex;
+  gap: 24px;
+  min-width: max-content;
+}
+
+.endorsement-card {
+  width: 420px;
+  max-width: 85vw;
+  background-color: #14161C;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--trans-medium), border-color var(--trans-fast);
+}
+
+.endorsement-card:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+}
+
+.endorse-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.endorse-seal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seal-icon {
+  font-size: 1.1rem;
+}
+
+.commission-year {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dark-muted);
+}
+
+.endorse-quote {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #F1F5F9;
+  margin: 0 0 28px 0;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.endorse-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--border-dark);
+  padding-top: 20px;
+}
+
+.author-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: #FFFFFF;
+}
+
+.author-name {
+  display: block;
+  font-size: 0.95rem;
+  color: #FFFFFF;
+  margin-bottom: 3px;
+}
+
+.author-role {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-dark-muted);
+  font-family: var(--font-mono);
+}
+
+/* --- Section: The Five-Century Commission Protocol --- */
+.section-protocol {
+  padding: 100px var(--pad-x);
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+}
+
+.protocol-header {
+  margin-bottom: 50px;
+}
+
+.protocol-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  letter-spacing: -0.03em;
+  margin-top: 12px;
+}
+
+.protocol-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.protocol-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .protocol-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .protocol-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.protocol-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--trans-medium);
+}
+
+.protocol-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
+  border-color: rgba(14, 15, 18, 0.3);
+}
+
+.protocol-step-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background-color: var(--bg-dark-obsidian);
+  color: #FFFFFF;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+
+.protocol-timeline {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.protocol-card-title {
+  font-family: var(--font-headline);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.protocol-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.protocol-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.proto-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  background-color: rgba(14, 15, 18, 0.05);
+  border-radius: 4px;
+  color: var(--text-main);
+}
+
+/* --- Interactive Architectural Blueprint Lightbox Modal --- */
+.blueprint-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.blueprint-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.blueprint-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(10, 11, 14, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.blueprint-dialog {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 960px;
+  background-color: #0B0E14;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-card);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.15);
+  overflow: hidden;
+  transform: scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blueprint-modal.active .blueprint-dialog {
+  transform: scale(1);
+}
+
+.blueprint-header {
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bp-heading {
+  font-family: var(--font-headline);
+  font-size: 1.3rem;
+  color: #FFFFFF;
+  margin-top: 4px;
+}
+
+.blueprint-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.blueprint-close-btn:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.blueprint-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background-color: #06090E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.blueprint-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+}
+
+.blueprint-svg {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  height: 90%;
+}
+
+.blueprint-meta-bar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 20px 28px;
+  background-color: #0A0D13;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 768px) {
+  .blueprint-meta-bar {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.bp-stat-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+}
+
+.bp-stat-val {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #38BDF8;
 }

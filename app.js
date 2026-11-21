@@ -503,6 +503,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (drawerOverlay) drawerOverlay.classList.remove('active');
     if (navDrawer) navDrawer.classList.remove('active');
     if (commissionDrawer) commissionDrawer.classList.remove('active');
+    const bpModal = document.getElementById('blueprintModal');
+    if (bpModal) bpModal.classList.remove('active');
+    document.body.style.overflow = '';
   };
 
   // Nav Drawer
@@ -562,4 +565,183 @@ document.addEventListener('DOMContentLoaded', () => {
       quickForm.querySelector('input').value = '';
     });
   }
+
+  /* ==========================================================================
+     11. MONOLITHS CATEGORY FILTERING
+     ========================================================================== */
+  const filterPills = document.querySelectorAll('#monolithFilters .filter-pill');
+
+  filterPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      const category = pill.getAttribute('data-category');
+      stackCards.forEach((card) => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('card-filtered-out');
+        } else {
+          card.classList.add('card-filtered-out');
+        }
+      });
+
+      // Recalculate stacking physics after filter change
+      if (typeof updateStackingEffects === 'function') {
+        updateStackingEffects();
+      }
+    });
+  });
+
+  /* ==========================================================================
+     12. ARCHITECTURAL BLUEPRINT LIGHTBOX MODAL
+     ========================================================================== */
+  const blueprintModal = document.getElementById('blueprintModal');
+  const blueprintOverlay = document.getElementById('blueprintOverlay');
+  const blueprintCloseBtn = document.getElementById('blueprintCloseBtn');
+  const openBlueprintBtns = document.querySelectorAll('.open-blueprint-btn');
+  const bpTitle = document.getElementById('bpTitle');
+  const bpSubTag = document.getElementById('bpSubTag');
+
+  const blueprintData = {
+    konkan: {
+      title: 'Konkan Basalt Monolith — Structural Cross-Section',
+      tag: '(CAD Schematic Elevation · Sub-Bedrock Basalt Strata)'
+    },
+    ghats: {
+      title: 'Western Ghats Stepwell Vault — Hydrostatic Section',
+      tag: '(CAD Geothermal Plan · 11.4m Bedrock Excavation)'
+    },
+    valser: {
+      title: 'Valser Fels Alpine Monolith — Avalanche Load Diagram',
+      tag: '(Swiss Alpine Structural CAD · 1,940m Elevation)'
+    },
+    kanso: {
+      title: 'Kanso Subterranean Vault — Astrolabe Joinery Section',
+      tag: '(Kyoto Nuki Mortise & Tenon Assembly CAD · Zero Metal)'
+    },
+    thar: {
+      title: 'Thar Desert Rammed Earth Citadel — Wind-Catcher Jali',
+      tag: '(Rajasthan Bioclimatic Jali Convection CAD · Caliche Clay)'
+    },
+    hudson: {
+      title: 'Hudson Highlands Obsidian Belvedere — Cantilever Tensile CAD',
+      tag: '(Americas Liaison · 14.2m Vitrified Glass Overlook)'
+    }
+  };
+
+  const closeBlueprintModal = () => {
+    if (blueprintModal) blueprintModal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  openBlueprintBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const bpKey = btn.getAttribute('data-blueprint') || 'konkan';
+      const info = blueprintData[bpKey] || blueprintData.konkan;
+      if (bpTitle) bpTitle.textContent = info.title;
+      if (bpSubTag) bpSubTag.textContent = info.tag;
+      if (blueprintModal) blueprintModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  if (blueprintCloseBtn) blueprintCloseBtn.addEventListener('click', closeBlueprintModal);
+  if (blueprintOverlay) blueprintOverlay.addEventListener('click', closeBlueprintModal);
+
+  /* ==========================================================================
+     13. PATRON ENDORSEMENTS CAROUSEL CONTROLS
+     ========================================================================== */
+  const endorseTrack = document.getElementById('endorsementsTrack');
+  const endorsePrevBtn = document.getElementById('endorsePrevBtn');
+  const endorseNextBtn = document.getElementById('endorseNextBtn');
+
+  if (endorseTrack && endorsePrevBtn && endorseNextBtn) {
+    endorsePrevBtn.addEventListener('click', () => {
+      endorseTrack.scrollBy({ left: -440, behavior: 'smooth' });
+    });
+    endorseNextBtn.addEventListener('click', () => {
+      endorseTrack.scrollBy({ left: 440, behavior: 'smooth' });
+    });
+  }
+
+  /* ==========================================================================
+     14. DYNAMIC NUMERIC COUNTER ANIMATIONS ON SCROLL
+     ========================================================================== */
+  const metricNums = document.querySelectorAll('.card-metric-num');
+  let hasAnimatedCounters = false;
+
+  const animateCounters = () => {
+    if (hasAnimatedCounters) return;
+    hasAnimatedCounters = true;
+
+    metricNums.forEach((el) => {
+      const target = parseFloat(el.getAttribute('data-target'));
+      if (isNaN(target)) return;
+
+      const duration = 1800;
+      const startTime = performance.now();
+
+      const updateCount = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const currentVal = Math.floor(easeProgress * target);
+
+        if (target >= 1000) {
+          el.textContent = currentVal.toLocaleString();
+        } else if (target === 0) {
+          el.textContent = '0.00';
+        } else {
+          el.textContent = currentVal.toString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          if (target >= 1000) el.textContent = target.toLocaleString();
+          else if (target === 0) el.textContent = '0.00';
+          else el.textContent = target.toString();
+        }
+      };
+
+      requestAnimationFrame(updateCount);
+    });
+  };
+
+  const telemetrySection = document.getElementById('telemetry');
+  if (telemetrySection && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    counterObserver.observe(telemetrySection);
+  }
+
+  /* ==========================================================================
+     15. 3D CARD TILT & TACTILE HOVER PHYSICS
+     ========================================================================== */
+  const interactiveCards = document.querySelectorAll('.discipline-card, .protocol-card, .monograph-card');
+  interactiveCards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 });
