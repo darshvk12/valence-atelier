@@ -569,20 +569,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const commissionCloseBtn = document.getElementById('commissionCloseBtn');
   const openCommissionBtns = document.querySelectorAll('.open-commission-btn');
 
+  const openDrawer = (drawerEl) => {
+    closeAllDrawers();
+    if (drawerOverlay) drawerOverlay.classList.add('active');
+    if (drawerEl) drawerEl.classList.add('active');
+    document.body.classList.add('drawer-open');
+    document.body.style.overflow = 'hidden';
+    if (lenis) lenis.stop();
+  };
+
   const closeAllDrawers = () => {
     if (drawerOverlay) drawerOverlay.classList.remove('active');
     if (navDrawer) navDrawer.classList.remove('active');
     if (commissionDrawer) commissionDrawer.classList.remove('active');
     const bpModal = document.getElementById('blueprintModal');
     if (bpModal) bpModal.classList.remove('active');
+    document.body.classList.remove('drawer-open');
     document.body.style.overflow = '';
+    if (lenis) lenis.start();
   };
 
   // Nav Drawer
   if (menuToggleBtn) {
     menuToggleBtn.addEventListener('click', () => {
-      drawerOverlay.classList.add('active');
-      navDrawer.classList.add('active');
+      openDrawer(navDrawer);
     });
   }
 
@@ -594,9 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
   openCommissionBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      closeAllDrawers();
-      drawerOverlay.classList.add('active');
-      commissionDrawer.classList.add('active');
+      openDrawer(commissionDrawer);
     });
   });
 
@@ -606,7 +614,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (drawerOverlay) {
     drawerOverlay.addEventListener('click', closeAllDrawers);
+    drawerOverlay.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
   }
+
+  // Allow natural finger/wheel scrolling inside drawers without bubbling to page
+  [navDrawer, commissionDrawer].forEach((drawer) => {
+    if (!drawer) return;
+    drawer.addEventListener('wheel', (e) => {
+      e.stopPropagation();
+    }, { passive: true });
+    drawer.addEventListener('touchmove', (e) => {
+      e.stopPropagation();
+    }, { passive: true });
+  });
 
   // Handle Commission Form Submission
   const commissionForm = document.getElementById('commissionForm');
@@ -702,7 +722,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closeBlueprintModal = () => {
     if (blueprintModal) blueprintModal.classList.remove('active');
+    document.body.classList.remove('drawer-open');
     document.body.style.overflow = '';
+    if (lenis) lenis.start();
   };
 
   openBlueprintBtns.forEach((btn) => {
@@ -713,7 +735,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (bpTitle) bpTitle.textContent = info.title;
       if (bpSubTag) bpSubTag.textContent = info.tag;
       if (blueprintModal) blueprintModal.classList.add('active');
+      document.body.classList.add('drawer-open');
       document.body.style.overflow = 'hidden';
+      if (lenis) lenis.stop();
     });
   });
 
