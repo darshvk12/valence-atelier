@@ -174,18 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHeroScrollScale();
 
   /* ==========================================================================
-     4. STICKY STACKING CARDS DEPTH DYNAMICS
+     4. STICKY STACKING CARDS DEPTH DYNAMICS (MOBILE & DESKTOP)
      ========================================================================== */
   const stackCards = document.querySelectorAll('.stack-card');
   function updateStackingEffects() {
-    if (window.innerWidth < 768) {
-      stackCards.forEach((card) => {
-        card.style.transform = '';
-        card.style.filter = '';
-      });
-      return;
-    }
-    const stickyThreshold = window.innerWidth >= 1024 ? 125 : 90;
+    const stickyThreshold = window.innerWidth >= 1024 ? 125 : (window.innerWidth >= 768 ? 90 : 82);
     stackCards.forEach((card, index) => {
       const rect = card.getBoundingClientRect();
       // If card has pinned near top (sticky range)
